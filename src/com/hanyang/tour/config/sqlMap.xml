@@ -30,7 +30,14 @@
     	values(default, #id#, #user#, #comment#)
   
     </insert>
-
+	
+	
+	<insert id="sign_up" parameterClass="com.hanyang.tour.model.MemberDto">
+		insert
+		into test (email, pwd, pwd2)
+		values(#email#, #pwd#,#pwd2#)
+	</insert>
+	
 </sqlMap>
  
  
