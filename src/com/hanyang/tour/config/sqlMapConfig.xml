@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMapConfig      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+    
+   
+    
+<sqlMapConfig>
+
+<!--name은 수정하지 않고 value만 수정  --> 
+<transactionManager type="JDBC" >
+<dataSource type="SIMPLE">
+<property name="JDBC.Driver" value="com.mysql.jdbc.Driver"/> 
+<property name="JDBC.ConnectionURL" value="jdbc:mysql://localhost:3306/testdb"/>
+<property name="JDBC.Username" value="user2"/>
+<property name="JDBC.Password" value="1234"/>
+</dataSource>
+</transactionManager>
+
+
+<!-- sqlMap은 * 로둘수있다 이말은 여러개로 설정할수 있다는 말이다 여러개의 xml을 불러올수 있다  -->
+<sqlMap resource="com/hanyang/tour/config/sqlMap.xml" />
+
+
+</sqlMapConfig>
+
+<!-- 여기까지가 기본 설정 -->

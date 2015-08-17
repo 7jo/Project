@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap>
+	<typeAlias alias="mdto" type="com.hanyang.tour.model.ReplyDto" />
+	<select id="view_commemt" parameterClass="String" resultClass="mdto">
+		select 
+			case DATE_FORMAT(r.date, '%Y-%m-%d') 
+				when DATE_FORMAT(now(), '%Y-%m-%d') then DATE_FORMAT(r.date, '%H:%i:%s') 
+				else DATE_FORMAT(r.date, '%Y-%m-%d %H:%i:%s') 
+				end as date, p.place, r.user, r.comment
+		from reply r, place p
+		where r.pid = p.id and p.place = #place#
+	</select>
+	
+	<select id="view_pid" parameterClass="String" resultClass="com.hanyang.tour.model.PlaceDto">
+		select p.id, p.place, p.img
+		from place p
+		where p.place = #place#
+	</select>
+	
+	<insert id="update_commemt" parameterClass="mdto"> 
+    	insert 
+    	into reply (date,pid,user,comment)
+    	values(default, #id#, #user#, #comment#)
+  
+    </insert>
+
+</sqlMap>
+ 
+ 
