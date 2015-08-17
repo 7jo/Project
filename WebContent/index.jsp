@@ -61,8 +61,7 @@
 					</ul>
 				</nav>
 			</div>
-		</div>
-		
+		</div>	
 	</nav>
 
 
