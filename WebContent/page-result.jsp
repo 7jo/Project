@@ -79,6 +79,7 @@
 	    		<div class="row">
 	    			<!-- Open Vacancies List -->
 	    			<div class="col-md-8">
+	    			<iframe src="/Tour/NewFile.html" width="90%" height="400"></iframe>	
 	    				<table class="jobs-list">
 	    					<tr>
 	    						<th>Location</th>

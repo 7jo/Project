@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -35,7 +34,7 @@
 
 
 	<!-- Navigation & Logo-->
-
+	
 	<nav class="fixed-nav-bar">
 
 		<div class="mainmenu-wrapper">
@@ -60,19 +59,18 @@
 				</div>
 				<nav id="mainmenu" class="mainmenu">
 					<ul>
-						<li class="logo-wrapper"><a href="index.jsp"> <img
-								src="img/7.png">
+						<li class="logo-wrapper"><a href="index.jsp">
+								<img src="img/7.png" >
 						</a></li>
 						<li class="active"><a href="index.jsp">Home</a></li>
 						<li><a href="page-team.jsp">About Us</a></li>
-						<li><a href="page-tour.jsp">Tour List</a>
+						<li ><a href="page-tour.jsp">Tour List</a>
 						<li><a href="page-register.jsp">Register</a></li>
 						<li><a href="page-result.jsp">Search Result</a></li>
 					</ul>
 				</nav>
 			</div>
 		</div>
-
 	</nav>
 
 
@@ -86,7 +84,8 @@
 					<!-- Slide Title -->
 					<h2 class="title">Responsive</h2> <!-- Slide Text -->
 					<h3 class="subtitle">It looks great on desktops, laptops,
-						tablets and smartphones</h3> <!-- Slide Image
+						tablets and smartphones</h3> 
+						<!-- Slide Image
 						 <img class="slide-img" src="img/homepage-slider/slide1.png"
 					alt="Slide 1" /> -->
 				</li>

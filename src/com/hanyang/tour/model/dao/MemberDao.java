@@ -21,10 +21,24 @@ public class MemberDao {
 		return memberDao;
 	}
 
+	
 	public int signup(MemberDto memberDao) {
 
 		try {
 			return sqlMapConfig.getSqlMapClient().update("sign_up", memberDao);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return 0;
+	}
+	
+	public int check(MemberDto mdto){
+		try {
+			
+			return (int) sqlMapConfig.getSqlMapClient().queryForObject("check_member", mdto);
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
