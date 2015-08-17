@@ -8,35 +8,47 @@
 
 <sqlMap>
 	<typeAlias alias="mdto" type="com.hanyang.tour.model.ReplyDto" />
-	<select id="view_commemt" parameterClass="String" resultClass="mdto">
-		select 
-			case DATE_FORMAT(r.date, '%Y-%m-%d') 
-				when DATE_FORMAT(now(), '%Y-%m-%d') then DATE_FORMAT(r.date, '%H:%i:%s') 
-				else DATE_FORMAT(r.date, '%Y-%m-%d %H:%i:%s') 
-				end as date, p.place, r.user, r.comment
-		from reply r, place p
-		where r.pid = p.id and p.place = #place#
-	</select>
+	<!-- 댓글 페이지 -->	
+		<!--댓글 검색 -->
+		<select id="view_commemt" parameterClass="String" resultClass="mdto">
+			select 
+				case DATE_FORMAT(r.date, '%Y-%m-%d') 
+					when DATE_FORMAT(now(), '%Y-%m-%d') then DATE_FORMAT(r.date, '%H:%i:%s') 
+					else DATE_FORMAT(r.date, '%Y-%m-%d %H:%i:%s') 
+					end as date, p.place, r.user, r.comment
+			from reply r, place p
+			where r.pid = p.id and p.place = #place#
+		</select>
+		<!--관광지 정보 검색 -->
+		<select id="view_pid" parameterClass="String" resultClass="com.hanyang.tour.model.PlaceDto">
+			select p.id, p.place, p.img
+			from place p
+			where p.place = #place#
+		</select>
+		<!--댓글 입력 -->
+		<insert id="update_commemt" parameterClass="mdto"> 
+	    	insert 
+	    	into reply (date,pid,user,comment)
+	    	values(default, #id#, #user#, #comment#)
+	  
+	    </insert>
+	<!-- 댓글 페이지 종료 -->
 	
-	<select id="view_pid" parameterClass="String" resultClass="com.hanyang.tour.model.PlaceDto">
-		select p.id, p.place, p.img
-		from place p
-		where p.place = #place#
-	</select>
+	<!-- 회원가입 페이지 -->
+		<!--회원가입 -->
+		<insert id="sign_up" parameterClass="com.hanyang.tour.model.MemberDto">
+			insert
+			into test (email, pwd, pwd2)
+			values(#email#, #pwd#,#pwd2#)
+		</insert>
+		<!--이메일 체크 -->
+		<select id="email_check" parameterClass="String" resultClass="int">
+			select count(email) from test where email=#email#
+		</select>
 	
-	<insert id="update_commemt" parameterClass="mdto"> 
-    	insert 
-    	into reply (date,pid,user,comment)
-    	values(default, #id#, #user#, #comment#)
-  
-    </insert>
 	
 	
-	<insert id="sign_up" parameterClass="com.hanyang.tour.model.MemberDto">
-		insert
-		into test (email, pwd, pwd2)
-		values(#email#, #pwd#,#pwd2#)
-	</insert>
+	<!-- 회원가입 페이지 종료 -->
 	
 </sqlMap>
  
