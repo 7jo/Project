@@ -54,7 +54,7 @@
 						</a></li>
 						</ul>
 						<ul>
-							<li><h5>
+							<li><h4>
 									<%
 								String emailId = (String)session.getAttribute("email");
 								String result;
@@ -65,7 +65,7 @@
 									<%}else{ %>
 									<a href="/Tour/page-login.jsp?islogin=true">Login</a>
 									<%} %>
-								</h5></li>
+								</h4></li>
 						</ul>
 					</div>
 				</div>
