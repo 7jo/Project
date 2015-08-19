@@ -7,7 +7,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Gyeonggi_Tour</title>
+        <title>Secret_Tour</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
@@ -22,6 +22,7 @@
 		<link rel="stylesheet" href="css/main.css">
 
         <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <style>  li { list-style: none;}   </style>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -31,34 +32,45 @@
 
         <!-- Navigation & Logo-->
        
-		<nav class="fixed-nav-bar">
-
+	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="mainmenu-wrapper">
-			<div class="container">
+			<div class="container-fluid">
 				<div class="menuextras">
 					<div class="extras">
+						<button type="button" data-target=".target" data-toggle="collapse"
+							class="navbar-toggle">
+							<span class="sr-only">Toggle navigation</span> <span
+								class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+						<li class="logo-wrapper"><a href="index.jsp"> <img
+								src="img/s1.png"><img
+								src="img/t2.png">
+						</a></li>
 						<ul>
-							<li><h5>
+							<li><h4>
 									<a href="page-login.jsp">Login</a>
-								</h5></li>
+								</h4></li>
 						</ul>
 					</div>
 				</div>
-				<nav id="mainmenu" class="mainmenu">
-					<ul>
-						<li class="logo-wrapper"><a href="index.jsp">
-								<img src="img/7.png" >
-						</a></li>
-						<li class="active"><a href="index.jsp">Home</a></li>
+
+				<div class="collapse navbar-collapse target">
+
+					<ul class="nav navbar-nav ">
+
+						<li><a href="index.jsp">Home</a></li>
 						<li><a href="page-team.jsp">About Us</a></li>
-						<li><a href="page-tour.jsp">Tour List</a></li>
+						<li><a href="page-tour.jsp">Tour List</a>
 						<li><a href="page-register.jsp">Register</a></li>
+						<li><a href="page-result.jsp">Search Result</a></li>
 					</ul>
-				</nav>
+				</div>
 			</div>
 		</div>
-		
+
 	</nav>
+
 
 
         <!-- Page Title -->
@@ -308,6 +320,8 @@
 						<li><a href="index.jsp">Home</a></li>
 						<li><a href="page-team.jsp">About Us</a></li>
 						<li><a href="page-tour.jsp">Tour List</a>
+						<li><a href="page-register.jsp">Register</a></li>
+						<li><a href="page-result.jsp">Search Result</a></li>
 					</ul>
 				</div>
 
