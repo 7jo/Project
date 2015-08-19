@@ -52,7 +52,16 @@
 						</a></li>
 						<ul>
 							<li><h4>
-									<a href="page-login.jsp">Login</a>
+									<%
+								String emailId = (String)session.getAttribute("email");
+								String result;
+								if(emailId !=null){
+								
+							%>
+									<a href="/Tour/page-logout.jsp">Logout</a>
+									<%}else{ %>
+									<a href="/Tour/page-login.jsp?islogin=true">Login</a>
+									<%} %>
 								</h4></li>
 						</ul>
 					</div>
