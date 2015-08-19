@@ -46,9 +46,14 @@
 			select count(email) from test where email=#email#
 		</select>
 	
-	
-	
 	<!-- 회원가입 페이지 종료 -->
+	
+	<select id="check_member" parameterClass="com.hanyang.tour.model.MemberDto" resultClass="int" >
+		select count(email)
+		from test
+		where email = #email# and
+			  pwd = #pwd#
+	</select>
 	
 </sqlMap>
  

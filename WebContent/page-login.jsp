@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -30,8 +31,25 @@
         <![endif]-->
         
 
-        <!-- Navigation & Logo-->
-     
+
+	<!-- Navigation & Logo-->
+	<%
+			
+		String bl = request.getParameter("islogin");
+		if(bl.equals("false")){
+	%>
+	<script type="text/javascript">
+	alert("로그인 실패 비번 아이디 다시 확인");
+	</script>
+	<%
+		}else{
+	%>
+	<script type="text/javascript">
+
+	</script>
+	<%
+		}
+	%>
 <nav class="navbar navbar-default navbar-fixed-top">
 		<div class="mainmenu-wrapper">
 			<div class="container-fluid">
@@ -61,7 +79,7 @@
 
 						<li><a href="index.jsp">Home</a></li>
 						<li><a href="page-team.jsp">About Us</a></li>
-						<li><a href="page-tour.jsp">Tour List</a>
+						<li><a href="page-tour.jsp">Tour List</a></li>
 						<li><a href="page-register.jsp">Register</a></li>
 						<li><a href="page-result.jsp">Search Result</a></li>
 					</ul>
@@ -84,56 +102,61 @@
 				</div>
 			</div>
 		</div>
-        
-        <div class="section">
-	    	<div class="container">
-				<div class="row">
-					<div class="col-sm-5">
-						<div class="basic-login">
-							<form role="form" role="form">
-								<div class="form-group">
-		        				 	<label for="login-username"><i class="icon-user"></i> <b>Username or Email</b></label>
-									<input class="form-control" id="login-username" type="text" placeholder="">
-								</div>
-								<div class="form-group">
-		        				 	<label for="login-password"><i class="icon-lock"></i> <b>Password</b></label>
-									<input class="form-control" id="login-password" type="password" placeholder="">
-								</div>
-								<div class="form-group">
-									<label class="checkbox">
-										<input type="checkbox"> Remember me
-									</label>
-									<a href="page-password-reset.html" class="forgot-password">Forgot password?</a>
-									<button type="submit" class="btn pull-right">Login</button>
-									<div class="clearfix"></div>
-								</div>
-							</form>
-						</div>
+	</div>
+
+	<div class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-5">
+					<div class="basic-login">
+						<form role="form" action="/Tour/login">
+							<div class="form-group">
+								<label for="login-username"><i class="icon-user"></i> <b>Username
+										or Email</b></label> <input class="form-control" id="login-username"
+									name="ck_email" type="text" placeholder="">
+							</div>
+							<div class="form-group">
+								<label for="login-password"><i class="icon-lock"></i> <b>Password</b></label>
+								<input class="form-control" id="login-password" name="ck_pwd"
+									type="password" placeholder="">
+							</div>
+							<div class="form-group">
+								<label class="checkbox"> <input type="checkbox">
+									Remember me
+								</label> <a href="page-password-reset.html" class="forgot-password">Forgot
+									password?</a>
+								<button type="submit" class="btn pull-right">Login</button>
+								<div class="clearfix"></div>
+							</div>
+						</form>
 					</div>
-					<div class="col-sm-7 social-login">
-						<p>Or login with your Facebook or Twitter</p>
-						<div class="social-login-buttons">
-							<a href="#" class="btn-facebook-login">Login with Facebook</a>
-							<a href="#" class="btn-twitter-login">Login with Twitter</a>
-						</div>
-						<div class="clearfix"></div>
-						<div class="not-member">
-							<p>Not a member? <a href="page-register.jsp">Register here</a></p>
-						</div>
+				</div>
+				<div class="col-sm-7 social-login">
+					<p>Or login with your Facebook or Twitter</p>
+					<div class="social-login-buttons">
+						<a href="#" class="btn-facebook-login">Login with Facebook</a> <a
+							href="#" class="btn-twitter-login">Login with Twitter</a>
+					</div>
+					<div class="clearfix"></div>
+					<div class="not-member">
+						<p>
+							Not a member? <a href="page-register.jsp">Register here</a>
+						</p>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 
-	    <!-- Footer -->
-<div class="footer">
+	<!-- Footer -->
+	<div class="footer">
 		<div class="container">
 			<div class="row">
 
 				<div class="col-footer col-md-3 col-xs-6">
 					<h3>Navigate</h3>
 					<ul class="no-list-style footer-navigate-section">
-					<li><a href="index.jsp">Home</a></li>
+						<li><a href="index.jsp">Home</a></li>
 						<li><a href="page-team.jsp">About Us</a></li>
 						<li><a href="page-tour.jsp">Tour List</a>
 						<li><a href="page-register.jsp">Register</a></li>

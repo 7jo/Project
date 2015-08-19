@@ -1,6 +1,8 @@
 package com.hanyang.tour.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,13 +36,19 @@ public class RegisterMember extends HttpServlet {
 		execute(request, response);
 	}
 
-	protected void execute(HttpServletRequest request, HttpServletResponse response){
+	protected void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		MemberDto mdto = new MemberDto();
 		mdto.setEmail(request.getParameter("email"));
 		mdto.setPwd(request.getParameter("pwd"));
 		mdto.setPwd2(request.getParameter("pwd2"));
 		
 		int signup = MemberDao.getMemberDao().signup(mdto);
+		
+		request.setAttribute("email", mdto.getEmail());
+		request.setAttribute("pwd", mdto.getPwd());
+		String path="/register-sucess.jsp";
+		RequestDispatcher disp  = request.getRequestDispatcher(path);
+		disp.forward(request, response);
 		
 	}
 

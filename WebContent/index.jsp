@@ -43,9 +43,10 @@
 				
 						<button type="button" data-target=".target" data-toggle="collapse"
 							class="navbar-toggle">
-							<span class="sr-only">Toggle navigation</span> <span
-								class="icon-bar"></span> <span class="icon-bar"></span> <span
-								class="icon-bar"></span>
+								<span class="sr-only">Toggle navigation</span>
+							 	<span class="icon-bar"></span> 
+								<span class="icon-bar"></span> 
+								<span class="icon-bar"></span>
 						</button>
 					<li class="logo-wrapper">	<a href="index.jsp"> <img
 								src="img/s1.png"><img
@@ -53,9 +54,18 @@
 						</a></li>
 						</ul>
 						<ul>
-							<li><h4>
-									<a href="page-login.jsp">Login</a>
-								</h4></li>
+							<li><h5>
+									<%
+								String emailId = (String)session.getAttribute("email");
+								String result;
+								if(emailId !=null){
+								
+							%>
+									<a href="/Tour/page-logout.jsp">Logout</a>
+									<%}else{ %>
+									<a href="/Tour/page-login.jsp?islogin=true">Login</a>
+									<%} %>
+								</h5></li>
 						</ul>
 					</div>
 				</div>
