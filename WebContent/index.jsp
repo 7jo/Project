@@ -5,6 +5,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> 
+<html class="no-js">
 <!--<![endif]-->
 <head>
 <meta charset="utf-8">
@@ -53,18 +54,21 @@
 						</a></li>
 						</ul>
 						<ul>
-							<li><h3>
-									<%
-								String emailId = (String)session.getAttribute("email");
-								String result;
-								if(emailId !=null){
-								
-							%>
-									<a href="/Tour/page-logout.jsp">로그아웃</a>
-									<%}else{ %>
-									<a href="/Tour/page-login.jsp?islogin=true">로그인</a>
-									<%} %>
-								</h3></li>
+							<li><h4> 
+ 									<% 
+ 								String emailId = (String)session.getAttribute("email"); 
+ 								String url = "index.jsp"; 
+								String result; 
+							if(emailId !=null){ 
+							 
+ 							%> 
+ 									<a href="/Tour/page-logout.jsp?url=<%=url%>">Logout</a> 
+									<%}else{  
+ 									%> 
+ 									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">Login</a> 
+									<%} %> 
+								</h4></li> 
+
 						</ul>
 					</div>
 				</div>

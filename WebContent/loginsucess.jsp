@@ -4,9 +4,10 @@
 <%
 	String ck_email =(String)request.getAttribute("email");
 	String ck_pwd =(String) request.getAttribute("pwd");
+	String url = (String) request.getAttribute("url");
 	session.setAttribute("email", ck_email);
 	session.setAttribute("pwd", ck_pwd);
-	response.sendRedirect("/Tour/index.jsp");  
+	response.sendRedirect("/Tour/"+url);  
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 

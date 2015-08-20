@@ -34,7 +34,7 @@
 
 	<!-- Navigation & Logo-->
 	<%
-			
+		String url = request.getParameter("url");
 		String bl = request.getParameter("islogin");
 		if(bl.equals("false")){
 	%>
@@ -45,7 +45,7 @@
 		}else{
 	%>
 	<script type="text/javascript">
-
+	alert(url);
 	</script>
 	<%
 		}
@@ -73,9 +73,17 @@
 								if(emailId !=null){
 								
 							%>
+<<<<<<< HEAD
 											<a href="/Tour/page-logout.jsp">로그아웃</a>
+=======
+									<a href="/Tour/page-logout.jsp?url=<%=url%>">Logout</a>
+>>>>>>> branch 'master' of https://github.com/7jo/Project.git
 									<%}else{ %>
+<<<<<<< HEAD
 									<a href="/Tour/page-login.jsp?islogin=true">로그인</a>
+=======
+									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">Login</a>
+>>>>>>> branch 'master' of https://github.com/7jo/Project.git
 									<%} %>
 								</h4></li>
 						</ul>
@@ -119,6 +127,7 @@
 				<div class="col-sm-5">
 					<div class="basic-login">
 						<form role="form" action="/Tour/login">
+						<input type="hidden" name="url" value="<%=url%>">
 							<div class="form-group">
 								<label for="login-username"><i class="icon-user"></i> <b>Username
 										or Email</b></label> <input class="form-control" id="login-username"

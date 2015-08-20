@@ -2,8 +2,9 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
+	String url = request.getParameter("url");
 	session.invalidate();
-	response.sendRedirect("/Tour/index.jsp");  
+	response.sendRedirect("/Tour/"+url);  
 %>
 <html>
 <head>

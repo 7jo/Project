@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>Info windows</title>
+    <title>Info</title>
     <style>
       html, body {
         height: 100%;
@@ -14,20 +14,20 @@
         height: 100%;
       }
     </style>
+    <script type="text/javascript">
+    	
+    </script>
   </head>
   <body>
     <div id="map"></div>
     <script>
 
-// This example displays a marker at the center of Australia.
-// When the user clicks the marker, an info window opens.
-
 function initMap() {
   var real_center = {lat: 37.3478859333, lng: 126.8879395};
-  var yh_house=new google.maps.LatLng(37.3003033,126.8425103);
-  var cha_house=new google.maps.LatLng(37.2687495,127.0122722);
-  var bm_house=new google.maps.LatLng(37.474605,126.809036); 
-
+  var yh_house=new google.maps.LatLng(37.300664, 126.840502);
+  var cha_house=new google.maps.LatLng(37.2687495, 127.0122722);
+  var bm_house=new google.maps.LatLng(37.474605, 126.809036); 
+  
 
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 10,
@@ -36,40 +36,40 @@ function initMap() {
   
 
   var lineSymbol = {
-    path: google.maps.SymbolPath.CIRCLE,
-    scale: 6,
-    strokeColor: '#FF00FF'
-  };
+		    path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+		    strokeColor: '#FF0000'
+		  };
 
-  // Create the polyline and add the symbol to it via the 'icons' property.
-  var line = new google.maps.Polyline({
-    path: [bm_house,yh_house,cha_house],
-    strokeColor:"#0000FF",
-    strokeWeight:2,
-    icons: [{
-      icon: lineSymbol,
-      offset: '100%'
-    }],
-    map: map
-  });
+		  // Create the polyline and add the symbol via the 'icons' property.
+		  var line = new google.maps.Polyline({
+		    path: [bm_house, yh_house, cha_house],
+		    strokeColor:"#A2A5A8",
+		    icons: [{
+		      icon: lineSymbol,
+		      offset: '100%'
+		    }],
+		    map: map
+		  });
 
-  animateCircle(line);
+		  animateArrow(line);
 
-  
-function animateCircle(line) {
-    var count = 0;
-    window.setInterval(function() {
-      count = (count + 1) % 200;
+		  
+		  function animateArrow(line) {
+		      var count = 0;
+		      window.setInterval(function() {
+		        count = (count + 1) % 200;
 
-      var icons = line.get('icons');
-      icons[0].offset = (count / 2) + '%';
-      line.set('icons', icons);
-  }, 20);
-}
-
+		        var icons = line.get('icons');
+		        icons[0].offset = (count / 2) + '%';
+		        line.set('icons', icons);
+		    }, 20);		  
+		  }
+		  
   var contentString_yh = 'Cook';
-  var contentString_cha = 'Poketmon';
-  var contentString_bm = 'Hello world';
+  var contentString_cha = '<img src="/Tour/img/numera.png" style="width:200px;height:180px;">'
+		+'<div></div>'+'<a href="http://afreeca.com/wssytyt">Pocketmon</a>';
+  var contentString_bm = '<img src="/Tour/img/Chrysanthemum.jpg" style="width:200px;height:180px;">'
+  							+'<div></div>'+'Hello World';
 
   var marker = new google.maps.Marker({
     position: yh_house,
@@ -100,6 +100,10 @@ function animateCircle(line) {
   var infowindow3 = new google.maps.InfoWindow({
     content: contentString_bm
   });
+  
+  function markerInMap(infowindow,map,marker,name){
+	      
+  }
 
   marker.addListener('click', function() {
     infowindow.open(map, marker);
@@ -109,15 +113,15 @@ function animateCircle(line) {
     infowindow2.open(map, marker2);
   });
 
-  marker3.addListener('click', function() {
-    infowindow3.open(map, marker3);
-  });
+  marker3.addListener('click', function(){
+	  infowindow.open(map, marker);  
+	  markerInMap("bm_house")});
 
 
 }
 
   </script>
-  <script async defer
-        src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"></script>
+  <script 
+        src="https://maps.googleapis.com/maps/api/js?signed_in=false&callback=initMap"></script>
   </body>
 </html>

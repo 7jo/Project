@@ -38,12 +38,13 @@ public class LoginServlet extends HttpServlet {
 		MemberDto mdto = new MemberDto();
 		mdto.setEmail(request.getParameter("ck_email"));
 		mdto.setPwd(request.getParameter("ck_pwd"));
+		String url = request.getParameter("url");
 	
 		
 		int check = MemberDao.getMemberDao().check(mdto);
 		
 		if(check==0){
-			String path="/page-login.jsp?islogin=false";
+			String path="/page-login.jsp?islogin=false&url="+url;
 			
 			RequestDispatcher disp  = request.getRequestDispatcher(path);
 			disp.forward(request, response);
@@ -51,6 +52,7 @@ public class LoginServlet extends HttpServlet {
 			String path="/loginsucess.jsp";
 			request.setAttribute("email", mdto.getEmail());
 			request.setAttribute("pwd", mdto.getPwd());
+			request.setAttribute("url", url);  
 			
 			RequestDispatcher disp  = request.getRequestDispatcher(path);
 			

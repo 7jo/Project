@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=utf-8"
    pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -36,9 +37,14 @@
       alert($("#place").text());
       alert($("#comment").val()); */
       var s = $("#comment").val();
-      if (s == '') {
-         alert("글자를 입력해주세요!!");
-      } else {
+      var email = $("#userid").val();
+      if(email == ''){
+    	  alert("로그인을 해야 입력이 가능합니다. 로그인 해주세요!!");
+      } 
+      else if (s == '') {
+    	  alert("글자를 입력해주세요!!");}
+      else {
+      
          $.ajax({
             type : "POST",
             url : "/Tour/update",
@@ -79,10 +85,9 @@
    }
 
    function update(data) {
-      alert("성공!!");
       var result;
       var date = js_yyyy_mm_dd_hh_mm_ss();
-      result = '<td>' 
+      result = '<td>' + $("#userid").text() + '</td><td>'
             + $("#comment").val() + '</td><td>' + date + '</td>';
       $("#comment_table").html(result);
    }
@@ -116,15 +121,22 @@
                      <li><h4>
                            <%
                         String emailId = (String)session.getAttribute("email");
+                           String url = "page-result.jsp";
                         String result;
                         if(emailId !=null){
                         
                      %>
-                           <a href="/Tour/page-logout.jsp">Logout</a>
-                           <%}else{ %>
-                           <a href="/Tour/page-login.jsp?islogin=true">Login</a>
-                           <%} %>
-                        </h4></li>
+									<a href="/Tour/page-logout.jsp?url=<%=url%>">Logout</a>
+									<%
+										} else {
+									%>
+									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">Login</a>
+									<%
+										}
+									%>
+
+
+								</h4></li>
                   </ul>
                </div>
             </div>
@@ -297,4 +309,5 @@
    <script src="js/template.js"></script>
 
 </body>
+
 </html>
