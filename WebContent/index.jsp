@@ -4,8 +4,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js">
+<!--[if gt IE 8]><!--> 
 <!--<![endif]-->
 <head>
 <meta charset="utf-8">
@@ -54,18 +53,18 @@
 						</a></li>
 						</ul>
 						<ul>
-							<li><h4>
+							<li><h3>
 									<%
 								String emailId = (String)session.getAttribute("email");
 								String result;
 								if(emailId !=null){
 								
 							%>
-									<a href="/Tour/page-logout.jsp">Logout</a>
+									<a href="/Tour/page-logout.jsp">로그아웃</a>
 									<%}else{ %>
-									<a href="/Tour/page-login.jsp?islogin=true">Login</a>
+									<a href="/Tour/page-login.jsp?islogin=true">로그인</a>
 									<%} %>
-								</h4></li>
+								</h3></li>
 						</ul>
 					</div>
 				</div>
@@ -142,13 +141,7 @@
 				<div class="col-md-12">
 					<div class="calltoaction-wrapper">
 
-						<form role="search" class="search-form" action="#" method="get">
-							<input class="search-field" type="text" name="s" id="s"
-								placeholder="Search Here" required>
-							<button class="btn search-btn" type="submit">
-								<i class="fa fa-search"></i>
-							</button>
-						</form>
+						
 						<!-- /.search-form -->
 
 						<!-- <h1>

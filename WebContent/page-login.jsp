@@ -73,9 +73,9 @@
 								if(emailId !=null){
 								
 							%>
-									<a href="/Tour/page-logout.jsp">Logout</a>
+											<a href="/Tour/page-logout.jsp">로그아웃</a>
 									<%}else{ %>
-									<a href="/Tour/page-login.jsp?islogin=true">Login</a>
+									<a href="/Tour/page-login.jsp?islogin=true">로그인</a>
 									<%} %>
 								</h4></li>
 						</ul>

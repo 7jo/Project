@@ -55,9 +55,9 @@
 								if(emailId !=null){
 								
 							%>
-									<a href="/Tour/page-logout.jsp">Logout</a>
+											<a href="/Tour/page-logout.jsp">로그아웃</a>
 									<%}else{ %>
-									<a href="/Tour/page-login.jsp?islogin=true">Login</a>
+									<a href="/Tour/page-login.jsp?islogin=true">로그인</a>
 									<%} %>
 								</h4></li>
 						</ul>
@@ -105,7 +105,7 @@
 								<ul>
 									<!-- Team Member Info & Social Links -->
 									<li class="team-member-name">
-										Name Surname
+										Name
 										<!-- Team Member Social Links -->
 										<span class="team-member-social">
 											<a href="#"><i class="icon-facebook"></i></a>
@@ -113,7 +113,7 @@
 											<a href="#"><i class="icon-tumblr"></i></a>
 										</span>
 									</li>
-									<li>Web Developer</li>
+									<li>차박사</li>
 								</ul>
 							</div>
 						</div>
@@ -125,14 +125,14 @@
 							<div class="team-member-info">
 								<ul>
 									<li class="team-member-name">
-										Name Surname
+										Name
 										<span class="team-member-social">
 											<a href="#"><i class="icon-facebook"></i></a>
 											<a href="#"><i class="icon-dribbble"></i></a>
 											<a href="#"><i class="icon-tumblr"></i></a>
 										</span>
 									</li>
-									<li>Web Designer</li>
+									<li>연홍</li>
 								</ul>
 							</div>
 						</div>
@@ -143,14 +143,14 @@
 							<div class="team-member-info">
 								<ul>
 									<li class="team-member-name">
-										Name Surname
+										Name
 										<span class="team-member-social">
 											<a href="#"><i class="icon-facebook"></i></a>
 											<a href="#"><i class="icon-dribbble"></i></a>
 											<a href="#"><i class="icon-tumblr"></i></a>
 										</span>
 									</li>
-									<li>Project Manager</li>
+									<li>병문</li>
 								</ul>
 							</div>
 						</div>
@@ -161,32 +161,32 @@
 							<div class="team-member-info">
 								<ul>
 									<li class="team-member-name">
-										Name Surname
+										Name
 										<span class="team-member-social">
 											<a href="#"><i class="icon-facebook"></i></a>
 											<a href="#"><i class="icon-dribbble"></i></a>
 											<a href="#"><i class="icon-tumblr"></i></a>
 										</span>
 									</li>
-									<li>Project Manager</li>
+									<li>창훈</li>
 								</ul>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-6">
 						<div class="team-member">
-							<div class="team-member-image"><img src="img/team5.jpg" alt="Name Surname"></div>
+							<div class="team-member-image"><img src="img/소윤.jpg" alt="Name Surname"></div>
 							<div class="team-member-info">
 								<ul>
 									<li class="team-member-name">
-										Name Surname
+										Name
 										<span class="team-member-social">
 											<a href="#"><i class="icon-facebook"></i></a>
 											<a href="#"><i class="icon-dribbble"></i></a>
 											<a href="#"><i class="icon-tumblr"></i></a>
 										</span>
 									</li>
-									<li>UX Designer</li>
+									<li>소윤</li>
 								</ul>
 							</div>
 						</div>
