@@ -55,6 +55,15 @@
 			  pwd = #pwd#
 	</select>
 	
+	<!-- 장소 불러들이기  -->
+	<select id="place2" resultClass="com.hanyang.tour.model.Place2Dto" >
+		select place, img, path, lat, lng
+		from place2
+	</select>
+	<!-- 코스검색  -->
+	<select id="view_path" parameterClass="String" resultClass="String">
+		select path from place2 where place=#place#
+	</select>
 </sqlMap>
  
  

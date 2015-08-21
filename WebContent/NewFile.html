@@ -1,127 +1,85 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>Info</title>
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 100%;
-      }
-    </style>
-    <script type="text/javascript">
-    	
-    </script>
-  </head>
-  <body>
-    <div id="map"></div>
-    <script>
-
-function initMap() {
-  var real_center = {lat: 37.3478859333, lng: 126.8879395};
-  var yh_house=new google.maps.LatLng(37.300664, 126.840502);
-  var cha_house=new google.maps.LatLng(37.2687495, 127.0122722);
-  var bm_house=new google.maps.LatLng(37.474605, 126.809036); 
-  
-
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 10,
-    center: real_center
-  });
-  
-
-  var lineSymbol = {
-		    path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-		    strokeColor: '#FF0000'
-		  };
-
-		  // Create the polyline and add the symbol via the 'icons' property.
-		  var line = new google.maps.Polyline({
-		    path: [bm_house, yh_house, cha_house],
-		    strokeColor:"#A2A5A8",
-		    icons: [{
-		      icon: lineSymbol,
-		      offset: '100%'
-		    }],
-		    map: map
-		  });
-
-		  animateArrow(line);
-
-		  
-		  function animateArrow(line) {
-		      var count = 0;
-		      window.setInterval(function() {
-		        count = (count + 1) % 200;
-
-		        var icons = line.get('icons');
-		        icons[0].offset = (count / 2) + '%';
-		        line.set('icons', icons);
-		    }, 20);		  
-		  }
-		  
-  var contentString_yh = 'Cook';
-  var contentString_cha = '<img src="/Tour/img/numera.png" style="width:200px;height:180px;">'
-		+'<div></div>'+'<a href="http://afreeca.com/wssytyt">Pocketmon</a>';
-  var contentString_bm = '<img src="/Tour/img/Chrysanthemum.jpg" style="width:200px;height:180px;">'
-  							+'<div></div>'+'Hello World';
-
-  var marker = new google.maps.Marker({
-    position: yh_house,
-    map: map,
-    title: 'yh_house'
-  });
-
-  var marker2 = new google.maps.Marker({
-    position: cha_house,
-    map: map,
-    title: 'cha_house'
-  });
-
-  var marker3 = new google.maps.Marker({
-    position: bm_house,
-    map: map,
-    title: 'bm_house'
-  });
-  
-  var infowindow = new google.maps.InfoWindow({
-    content: contentString_yh
-  });
-
-  var infowindow2 = new google.maps.InfoWindow({
-    content: contentString_cha
-  });
-
-  var infowindow3 = new google.maps.InfoWindow({
-    content: contentString_bm
-  });
-  
-  function markerInMap(infowindow,map,marker,name){
-	      
-  }
-
-  marker.addListener('click', function() {
-    infowindow.open(map, marker);
-  });
-
-  marker2.addListener('click', function() {
-    infowindow2.open(map, marker2);
-  });
-
-  marker3.addListener('click', function(){
-	  infowindow.open(map, marker);  
-	  markerInMap("bm_house")});
-
-
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+<title>Info</title>
+<style>
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
 }
 
-  </script>
-  <script 
-        src="https://maps.googleapis.com/maps/api/js?signed_in=false&callback=initMap"></script>
-  </body>
+#map {
+	height: 80%;
+}
+</style>
+<script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+	<div id="map"></div>
+	<div onclick="javascript:test();">test!!</div>
+	<script src="/Tour/js/jquery-map.js"></script>
+	<script>
+		var map;
+		var real_center;
+		function test() {
+			alert("fuck!!");
+		};
+		function loadMarker() {
+			$.ajax({
+				type : "GET",
+				url : "/Tour/result",
+				success : getScript
+			});
+		}
+		function initMap() {
+			real_center = {
+				lat : 37.3478859333,
+				lng : 126.8879395
+			};
+			map = new google.maps.Map(document.getElementById('map'), {
+				zoom : 10,
+				center : real_center
+			});
+			ajaxfunc();
+
+		}
+
+		function getScript(data) {
+			//alert("sadfasdfasd")
+			var result;
+			result = data;
+			$("#code").html(result);
+		}
+
+		function clickInMap(position_name) {
+			//클릭시 이벤트
+			$.ajax({
+				type : "GET",
+				url : "/Tour/list",
+				data : {
+					"title" : position_name
+				},
+				success : listOk
+			});
+		}
+
+		//	var listMap = new Map();
+		//	listMap.set("bm_house",bm_house);
+		//	listMap.set("yh_house",yh_house);
+		//	listMap.set("cha_house",cha_house);
+
+		function listOk(data) {
+			var result;
+			result = '<span onclick=test();>' + data + '</span>';
+			$("#code").html(result);
+		}
+	</script>
+	<script id="code"></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?signed_in=false&callback=initMap"></script>
+</body>
 </html>

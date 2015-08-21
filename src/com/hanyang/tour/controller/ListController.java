@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hanyang.tour.model.dao.Place2Dao;
+
 /**
  * Servlet implementation class ListController
  */
@@ -28,26 +30,10 @@ public class ListController extends HttpServlet {
 		execute(request, response);
 	}
 	protected void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		String position_name = request.getParameter("title");
-//		ArrayList<String> list = new ArrayList<String>();
-//		
-//		if(position_name.equals("bm_house")){	list.add("bm_house");
-//			list.add("yh_house");
-//			list.add("cha_house");
-//		}else if(position_name.equals("yh_house")){
-//			list.add("yh_house");
-//			list.add("cha_house");
-//			list.add("bm_house");			
-//		}else if(position_name.equals("cha_house")){
-//			list.add("cha_house");
-//			list.add("bm_house");
-//			list.add("yh_house");
-//		}
-
-		String list = position_name+"->cha_house->yh_house";
+		String place = request.getParameter("title");
+		String path = Place2Dao.getMemberDao().getPath(place);
 		PrintWriter out = response.getWriter();
-		out.print(list);
-		//session.setMaxInactiveInterval(60*30); // default is 30 seconds; 60*1 = 60 seconds 	
+		out.print(path);	
 			
 	}
 

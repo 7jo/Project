@@ -28,107 +28,59 @@
 <link rel="stylesheet" href="css/main.css">
 
 <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<script src="/Tour/js/jquery-map.js"></script>
 <script type="text/javascript">
+	var map;
+	var real_center;
+	var lineSymbol;
+	var line;
+	var danwon6;
+	var result;
+
 	function initMap() {
-		var real_center = {
+		real_center = {
 			lat : 37.3478859333,
 			lng : 126.8879395
 		};
-		var yh_house = new google.maps.LatLng(37.3003033, 126.8425103);
-		var cha_house = new google.maps.LatLng(37.2687495, 127.0122722);
-		var bm_house = new google.maps.LatLng(37.474605, 126.809036);
-
-		var map = new google.maps.Map(document.getElementById('map'), {
+		map = new google.maps.Map(document.getElementById('map'), {
 			zoom : 10,
 			center : real_center
 		});
 
-		var lineSymbol = {
-			path : google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-			strokeColor : '#FF0000'
-		};
+		danwon6 = new google.maps.LatLng(37.318576, 126.829089);
 
 		// Create the polyline and add the symbol via the 'icons' property.
-		var line = new google.maps.Polyline({
-				path : [ bm_house, yh_house, cha_house ],
-				strokeColor : "#A2A5A8",
-				icons : [ {
-					icon : lineSymbol,
-					offset : '100%'
-				} ],
-				map : map
-			});
-			
-			animateArrow(line);
-
-			function animateArrow(line) {
-				var count = 0;
-				window.setInterval(function() {
-					count = (count + 1) % 200;
-
-					var icons = line.get('icons');
-					icons[0].offset = (count / 2) + '%';
-					line.set('icons', icons);
-				}, 20);
-			}
-
-		var contentString_yh = 'Cook';
-		var contentString_cha = '<img src="/Tour/img/numera.png" style="width:200px;height:180px;">'
-				+ '<div></div>'
-				+ '<a href="http://afreeca.com/wssytyt">Pocketmon</a>';
-		var contentString_bm = '<img src="/Tour/img/Chrysanthemum.jpg" style="width:200px;height:180px;">'
-				+ '<div></div>' + 'Hello World';
-
-		var marker = new google.maps.Marker({
-			position : yh_house,
-			map : map,
-			title : 'yh_house'
+		line = new google.maps.Polyline({
+			path : [ danwon6 ],
+			map : map
 		});
-
-		var marker2 = new google.maps.Marker({
-			position : cha_house,
-			map : map,
-			title : 'cha_house'
-		});
-
-		var marker3 = new google.maps.Marker({
-			position : bm_house,
-			map : map,
-			title : 'bm_house'
-		});
-
-		var infowindow = new google.maps.InfoWindow({
-			content : contentString_yh
-		});
-
-		var infowindow2 = new google.maps.InfoWindow({
-			content : contentString_cha
-		});
-
-		var infowindow3 = new google.maps.InfoWindow({
-			content : contentString_bm
-		});
-
-		marker.addListener('click', function() {
-			infowindow.open(map, marker);
-		});
-
-		marker2.addListener('click', function() {
-			infowindow2.open(map, marker2);
-		});
-
-		marker3.addListener('click', function() {
-			infowindow3.open(map, marker3);
-			clickInMap("bm_house")
-		});
+		loadMarker();
 
 	}
-	
-	function check(){
-		alert("check");
-			
-			}
-	
+	function animateArrow(line) {
+		var count = 0;
+		window.setInterval(function() {
+			count = (count + 1) % 200;
+
+			var icons = line.get('icons');
+			icons[0].offset = (count / 2) + '%';
+			line.set('icons', icons);
+		}, 20);
+	}
+	function loadMarker() {
+		$.ajax({
+			type : "GET",
+			url : "/Tour/result",
+			success : getScript
+		});
+	}
+	function getScript(data) {
+		//alert("sadfasdfasd")
+		var result;
+		result = data;
+		$("#code").html(result);
+	}
+
 	function clickInMap(position_name) {
 		//클릭시 이벤트
 		$.ajax({
@@ -140,23 +92,43 @@
 			success : listOk
 		});
 	}
-
-	//	var listMap = new Map();
-	//	listMap.set("bm_house",bm_house);
-	//	listMap.set("yh_house",yh_house);
-	//	listMap.set("cha_house",cha_house);
-
 	function listOk(data) {
-		var result;
-		//var resultAry = result.split("-");
-		result = '<span onclick=check();>'+data+'</span>';
-		//redraw();
-		
-		$("#recmdlist").html(result);
-		//drawLine(listMap.get("bm_house"),listMap.get("cha_house"),listMap.get("yh_house"));
+		result = data.split("->");
+		var recPath = '<span onclick="javascript:drawLine(result);">' + data
+				+ '</span>';
+		$("#recmdlist").html(recPath);
+	}
+	function drawLine(result) {
+		line.setMap(null);
+		newMap(result);
+	};
+	function newMap(result) {
+		var size = result.length;
+		alert(result);
+		lineSymbol = {
+			path : google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+			strokeColor : '#FF0000'
+		};
+
+		line = new google.maps.Polyline({
+			strokeColor : "#A2A5A8",
+			icons : [ {
+				icon : lineSymbol,
+				offset : '100%'
+			} ],
+			map : map
+		});
+		var path = line.getPath();
+		for (var i = 0; i < size; i++) {
+			path.push(hashmap.get(result[i]));
+		}
+		line.setPath(path);
+
+		animateArrow(line);
 
 	}
 </script>
+<script id="code"></script>
 <style>
 li {
 	list-style: none;
@@ -201,17 +173,16 @@ html, body {
 						<ul>
 							<li><h4>
 									<%
-								String emailId = (String)session.getAttribute("email");
-								String url = "page-result.jsp";
-								String result;
-								if(emailId !=null){
-								
-							%>
-									<a href="/Tour/page-logout.jsp">Logout</a>
+										String emailId = (String) session.getAttribute("email");
+										String url = "page-result.jsp";
+										String result;
+										if (emailId != null) {
+									%>
+									<a href="/Tour/page-logout.jsp?url=<%=url%>">Logout</a>
 									<%
 										} else {
 									%>
-									<a href="/Tour/page-login.jsp?islogin=true">Login</a>
+									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">Login</a>
 									<%
 										}
 									%>
