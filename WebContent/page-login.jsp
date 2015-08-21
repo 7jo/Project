@@ -73,18 +73,12 @@
 								if(emailId !=null){
 								
 							%>
-<<<<<<< HEAD
-											<a href="/Tour/page-logout.jsp">로그아웃</a>
-=======
-									<a href="/Tour/page-logout.jsp?url=<%=url%>">Logout</a>
->>>>>>> branch 'master' of https://github.com/7jo/Project.git
-									<%}else{ %>
-<<<<<<< HEAD
-									<a href="/Tour/page-login.jsp?islogin=true">로그인</a>
-=======
-									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">Login</a>
->>>>>>> branch 'master' of https://github.com/7jo/Project.git
-									<%} %>
+
+										<a href="/Tour/page-logout.jsp?url=<%=url%>">Logout</a> 
+									<%}else{  
+ 									%> 
+ 									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">Login</a> 
+									<%} %> 
 								</h4></li>
 						</ul>
 					</div>

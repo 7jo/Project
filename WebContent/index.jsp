@@ -28,6 +28,11 @@
 
 <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 <style>  li { list-style: none;}   </style>
+<style type="text/css">
+h{
+font-size:45px;
+}
+</style>
 </head>
 <body>
 	<!--[if lt IE 7]>
@@ -48,9 +53,10 @@
 								<span class="icon-bar"></span> 
 								<span class="icon-bar"></span>
 						</button>
-					<li class="logo-wrapper">	<a href="index.jsp"> <img
-								src="img/s1.png"><img
-								src="img/t2.png">
+					<li class="logo-wrapper">	<a href="index.jsp"> <!-- <img
+								src="img/s1.png"> <img
+								src="img/tour.png">-->
+								<h1><h> Secret Tour </h></h1> 
 						</a></li>
 						</ul>
 						<ul>

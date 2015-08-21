@@ -39,7 +39,7 @@ public class DetailController extends HttpServlet {
 		String root = request.getContextPath();
 		String place = request.getParameter("place");
 		String path = "/index.jsp";
-		HttpSession session = request.getSession(); 
+	
 		
 		List<ReplyDto> list = ReplyDao.getMemberDao().list(place);
 		PlaceDto pDto = PlaceDao.getMemberDao().getPdto(place);
@@ -51,7 +51,7 @@ public class DetailController extends HttpServlet {
 		request.setAttribute("pid", pDto.getId());
 		request.setAttribute("pimg", pDto.getImg());
 		
-		session.setAttribute("id", "dr cha");
+		
 		//session.setMaxInactiveInterval(60*30); // default is 30 seconds; 60*1 = 60 seconds 	
 		RequestDispatcher disp  = request.getRequestDispatcher(path);
 		disp.forward(request, response);
