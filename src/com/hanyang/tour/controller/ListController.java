@@ -32,6 +32,7 @@ public class ListController extends HttpServlet {
 	protected void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String place = request.getParameter("title");
 		String path = Place2Dao.getMemberDao().getPath(place);
+		path = place+":"+path;
 		PrintWriter out = response.getWriter();
 		out.print(path);	
 			

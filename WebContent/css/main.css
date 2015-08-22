@@ -2393,6 +2393,7 @@ span.color-red {
 +	Main Menu Style
 --------------------------------------------------------------------------*/
 .mainmenu li.logo-wrapper a {
+	font-size : 20pt;
   border-right: 1px solid #E8E8E8;
   padding-left: 0;
   padding-top: 0;

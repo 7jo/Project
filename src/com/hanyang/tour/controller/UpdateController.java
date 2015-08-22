@@ -27,6 +27,7 @@ public class UpdateController extends HttpServlet {
 		mdto.setUser(request.getParameter("user"));
 		System.out.println(request.getParameter("user"));
 		mdto.setId(Integer.parseInt(request.getParameter("pid")));
+		mdto.setDate(request.getParameter("date"));
 		mdto.setComment(request.getParameter("comment"));
 		
 		int update = ReplyDao.getMemberDao().update(mdto);
