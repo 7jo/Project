@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	String emailId = (String) session.getAttribute("email");
+	if(emailId != null && emailId.equals("root")){
+		response.sendRedirect("/Tour/notice"); 
+	}
+	String url = "page-notice.jsp";
+	String result;
+%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -33,8 +42,8 @@ li {
 }
 </style>
 <style type="text/css">
-h {
-	font-size: 45px;
+h{
+font-size:45px;
 }
 </style>
 </head>
@@ -66,19 +75,14 @@ h {
 						<ul>
 							<li><h4>
 									<%
-										String emailId = (String) session.getAttribute("email");
-										String result;
 										if (emailId != null) {
 									%>
-									<a href="/Tour/page-logout.jsp">로그아웃</a>
-									<%
-										} else {
-									%>
-									<a href="/Tour/page-login.jsp?islogin=true">로그인</a>
-									<%
-										}
-									%>
-								</h4></li>
+									<%=emailId %>님 환영합니다.&nbsp; &nbsp;<a href="/Tour/page-logout.jsp?url=<%=url%>">로그아웃</a> 
+									<%}else{  
+ 									%> 
+ 									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">로그인</a> 
+									<%} %> 
+								</h4></li> 
 						</ul>
 					</div>
 				</div>
@@ -88,14 +92,15 @@ h {
 					<ul class="nav navbar-nav ">
 						<li><a href="index.jsp">홈 </a></li>
 						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
+						<li><a href="/Tour/notice">공지사항 </a></li>
 						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
+		<div class="nav_underbar"></div>
 
 	</nav>
-
 
 
 
@@ -104,7 +109,7 @@ h {
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<h1>Credits</h1>
+					<h1>공지사항</h1>
 				</div>
 			</div>
 		</div>
@@ -112,9 +117,28 @@ h {
 
 	<div class="section">
 		<div class="container">
-			<!-- 내용넣기 -->
+			<h2>공지사항</h2>
 		</div>
 	</div>
+
+	<div class="section">
+		<div class="container">
+			<div class="row">
+				<c:forEach items="${mlist}" var="list">
+					<div class="col-md-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">${list.date}</div>
+							<div class="panel-body">
+								<p>${list.contents}</p>
+							</div>
+						</div>
+					</div>
+					<br><br>
+				</c:forEach>
+			</div>
+		</div>
+	</div>
+
 
 
 	<!-- Footer -->
@@ -128,6 +152,7 @@ h {
 					<ul class="no-list-style footer-navigate-section">
 						<li><a href="index.jsp">홈 </a></li>
 						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
+						<li><a href="/Tour/notice">공지사항 </a></li>
 						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
 
@@ -150,7 +175,6 @@ h {
 			</div>
 		</div>
 	</div>
-
 
 	<!-- Javascripts -->
 	<script

@@ -50,11 +50,11 @@ h {
 
 	function initMap() {
 		real_center = {
-			lat : 37.3478859333,
-			lng : 126.8879395
+			lat : 37.321872,
+			lng : 126.830847
 		};
 		map = new google.maps.Map(document.getElementById('map'), {
-			zoom : 10,
+			zoom : 13,
 			center : real_center
 		});
 
@@ -208,15 +208,12 @@ html, body {
 										String result;
 										if (emailId != null) {
 									%>
-									<a href="/Tour/page-logout.jsp?url=<%=url%>">로그아웃</a>
-									<%
-										} else {
-									%>
-									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">로그인</a>
-									<%
-										}
-									%>
-								</h4></li>
+									<%=emailId %>님 환영합니다.&nbsp; &nbsp;<a href="/Tour/page-logout.jsp?url=<%=url%>">로그아웃</a> 
+									<%}else{  
+ 									%> 
+ 									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">로그인</a> 
+									<%} %> 
+								</h4></li> 
 						</ul>
 					</div>
 				</div>
@@ -226,11 +223,13 @@ html, body {
 					<ul class="nav navbar-nav ">
 						<li><a href="index.jsp">홈 </a></li>
 						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
+						<li><a href="/Tour/notice">공지사항 </a></li>
 						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
+		<div class="nav_underbar"></div>
 
 	</nav>
 
@@ -825,7 +824,6 @@ html, body {
 						<script
 							src="https://maps.googleapis.com/maps/api/js?signed_in=false&callback=initMap"></script>
 				</li>
-				<li class="divider"></li>
 
 				<!-- 		<table class="jobs-list">
 						<tr>
@@ -846,10 +844,7 @@ html, body {
 						</tr>
 						-->
 
-
-				<li>
 					<div class="col-md-4">
-						<td>
 							<div class="panel panel-default">
 
 								<div class="panel-heading">
@@ -877,11 +872,6 @@ html, body {
 
 	<!-- End Open Vacancies List -->
 
-
-	</div>
-	</div>
-	</div>
-
 	<!-- Footer -->
 	<div class="footer">
 		<div class="container">
@@ -893,6 +883,7 @@ html, body {
 					<ul class="no-list-style footer-navigate-section">
 						<li><a href="index.jsp">홈 </a></li>
 						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
+						<li><a href="/Tour/notice">공지사항 </a></li>
 						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
 

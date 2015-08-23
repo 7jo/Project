@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	String emailId = (String) session.getAttribute("email");
+	String url = "page-notice-admin.jsp";
+	String result;
+	if (emailId == null|| !emailId.equals("root")) {
+		response.sendRedirect("/Tour/notice");
+	}
+%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -8,25 +17,6 @@
 <html class="no-js">
 <!--<![endif]-->
 <head>
-<style>
-#appLoadingIndicator {
-	display: table;
-	width: 100%;
-	height: 100%;
-	margin: 0 auto;
-}
-
-#cell {
-	display: table-cell;
-	text-align: center;
-	vertical-align: middle;
-	margin: 0 auto;
-}
-
-#wrapper {
-	margin: 0 auto;
-}
-</style>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title>Secret_Tour</title>
@@ -56,52 +46,6 @@ h {
 	font-size: 45px;
 }
 </style>
-<script type="text/javascript">
-	function emailcheck() {
-		//alert(document.getElementById("userid").value);
-		//alert($("#userid").val());
-		$.ajax({
-			type : "GET",
-			url : "/Tour/validation",
-			data : {
-				"email" : $("#register-email").val()
-			},
-			success : emailOk
-
-		});
-
-	}
-
-	function pwdcheck() {
-		var pwd1 = $("#register-password").val();
-		var pwd2 = $("#register-password2").val();
-		var result;
-		if (pwd1 === pwd2) {
-			result = '<font color="green">OK !! </font>';
-		} else {
-			result = '<font color="red">패스워드가 일치하지 않습니다.</font>'
-		}
-		$("#pwdresult").html(result);
-
-	}
-
-	function emailOk(data) {
-		var result;
-		if (data != 0) {
-			result = '<font color="red">' + $("#register-email").val()
-					+ '는 사용불가 합니다.</font>'
-		} else {
-			result = '<font color="green">' + $("#register-email").val()
-					+ '는 사용가능 합니다.</font>'
-		}
-		$("#resultview").html(result);
-	}
-</script>
-<style>
-li {
-	list-style: none;
-}
-</style>
 </head>
 <body>
 	<!--[if lt IE 7]>
@@ -110,7 +54,6 @@ li {
 
 
 	<!-- Navigation & Logo-->
-
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="mainmenu-wrapper">
 			<div class="container-fluid">
@@ -132,9 +75,6 @@ li {
 						<ul>
 							<li><h4>
 									<%
-										String emailId = (String) session.getAttribute("email");
-										String url = (String)request.getParameter("url");
-										String result;
 										if (emailId != null) {
 									%>
 									<%=emailId %>님 환영합니다.&nbsp; &nbsp;<a href="/Tour/page-logout.jsp?url=<%=url%>">로그아웃</a> 
@@ -164,62 +104,59 @@ li {
 
 
 
-
 	<!-- Page Title -->
-
-
-	<div id="appLoadingIndicator">
-		<div id="cell">
-			<div class="section section-breadcrumbs">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<h1>Register</h1>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="section">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-5">
-							<div class="basic-login">
-								<form role="form" action="/Tour/register">
-								<input type=hidden name="url" value="<%=url%>"/>
-									<div class="form-group">
-										<label for="register-username"><i class="icon-user"></i>
-											<b>이름 또는 이메일</b></label> <input class="form-control" id="register-email"
-											name="email" type="text" placeholder=""
-											onkeyup="javascript:emailcheck();"><span
-											id="resultview"></span>
-									</div>
-									<div class="form-group">
-										<label for="register-password"><i class="icon-lock"></i>
-											<b>비밀번호</b></label> <input class="form-control"
-											id="register-password" name="pwd" type="password"
-											placeholder="">
-									</div>
-									<div class="form-group">
-										<label for="register-password2"><i class="icon-lock"></i>
-											<b>비밀번호 재확인</b></label> <input class="form-control"
-											id="register-password2" name="pwd2" type="password"
-											placeholder="" onkeyup="javascript:pwdcheck();"><span
-											id="pwdresult"></span>
-									</div>
-									<div class="form-group">
-										<button type="submit" class="btn pull-right">등록하기</button>
-										<div class="clearfix"></div>
-									</div>
-								</form>
-							</div>
-						</div>
-
-					</div>
+	<div class="section section-breadcrumbs">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1>공지사항</h1>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	<div class="section">
+		<div class="container">
+			<div class="pull-right">
+				<a href="page-notice-act.jsp?act=add"><button type="button" class="btn btn-default">+공지사항 등록</button></a>
+			</div>
+
+			<h2>공지사항</h2>
+		</div>
+	</div>
+
+	<div class="section">
+		<div class="container">
+			<div class="row">
+				<c:forEach items="${mlist}" var="list">
+					<div class="col-md-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">${list.date}</div>
+							<div class="panel-body">
+								<p>${list.contents}</p>
+							</div>
+						</div>
+					</div>
+					<div class="container">
+					<form action="/Tour/page-notice-act.jsp" method="POST">
+					<input type=hidden name="act" value="mod">
+					<input type=hidden name="id" value="${list.id}">
+					<input type=hidden name="contents" value="${list.contents}">
+					<div class="pull-right">
+							<input type="submit" class="btn btn-default" value="수정">
+							&nbsp;&nbsp;
+							<a href="notice?act=del&id=${list.id}"><button type="button" class="btn btn-default">삭제</button></a>
+					</div>
+					</form>
+						
+					</div>
+					<br><br>
+				</c:forEach>
+			</div>
+		</div>
+	</div>
+
+
 
 	<!-- Footer -->
 	<div class="footer">
@@ -250,7 +187,7 @@ li {
 			<div class="row">
 				<div class="col-md-12">
 					<div class="footer-copyright">&copy; 2015 All rights
-						reserved from Team_Secret</div>
+						reserved.</div>
 				</div>
 			</div>
 		</div>

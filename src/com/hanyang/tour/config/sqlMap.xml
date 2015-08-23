@@ -8,32 +8,33 @@
 
 <sqlMap>
 	<typeAlias alias="mdto" type="com.hanyang.tour.model.ReplyDto" />
-	<!-- 댓글 페이지 -->	
+	<!-- 댓글 페이지 -->
 		<!--댓글 검색 -->
 		<select id="view_commemt" parameterClass="String" resultClass="mdto">
-			select 
-				case DATE_FORMAT(r.date, '%Y-%m-%d') 
-					when DATE_FORMAT(now(), '%Y-%m-%d') then DATE_FORMAT(r.date, '%H:%i:%s') 
-					else DATE_FORMAT(r.date, '%Y-%m-%d %H:%i:%s') 
-					end as date, p.place, r.user, r.comment
+			select
+			case DATE_FORMAT(r.date, '%Y-%m-%d')
+			when DATE_FORMAT(now(), '%Y-%m-%d') then DATE_FORMAT(r.date, '%H:%i:%s')
+			else DATE_FORMAT(r.date, '%Y-%m-%d %H:%i:%s')
+			end as date, p.place, r.user, r.comment
 			from reply r, place2 p
 			where r.pid = p.id and p.place = #place#
 		</select>
 		<!--관광지 정보 검색 -->
-		<select id="view_pid" parameterClass="String" resultClass="com.hanyang.tour.model.PlaceDto">
+		<select id="view_pid" parameterClass="String"
+			resultClass="com.hanyang.tour.model.PlaceDto">
 			select p.id, p.place, p.img
 			from place2 p
 			where p.place = #place#
 		</select>
 		<!--댓글 입력 -->
-		<insert id="update_commemt" parameterClass="mdto"> 
-	    	insert 
-	    	into reply (date,pid,user,comment)
-	    	values(#date#, #id#, #user#, #comment#)
-	  
-	    </insert>
-	<!-- 댓글 페이지 종료 -->
+		<insert id="update_commemt" parameterClass="mdto">
+			insert
+			into reply (date,pid,user,comment)
+			values(#date#, #id#, #user#, #comment#)
 	
+		</insert>
+	<!-- 댓글 페이지 종료 -->
+
 	<!-- 회원가입 페이지 -->
 		<!--회원가입 -->
 		<insert id="sign_up" parameterClass="com.hanyang.tour.model.MemberDto">
@@ -46,24 +47,61 @@
 			select count(email) from account where email=#email#
 		</select>
 	
-	<!-- 회원가입 페이지 종료 -->
+		<!-- 회원가입 페이지 종료 -->
 	
-	<select id="check_member" parameterClass="com.hanyang.tour.model.MemberDto" resultClass="int" >
-		select count(email)
-		from account
-		where email = #email# and
-			  pwd = #pwd#
-	</select>
+		<select id="check_member" parameterClass="com.hanyang.tour.model.MemberDto"
+			resultClass="int">
+			select count(email)
+			from account
+			where email = #email#
+			and
+			pwd = #pwd#
+		</select>
+	<!-- 회원가입 페이지 끝 -->
 	
-	<!-- 장소 불러들이기  -->
-	<select id="place2" resultClass="com.hanyang.tour.model.Place2Dto" >
-		select place, img, path, lat, lng
-		from place2
-	</select>
-	<!-- 코스검색  -->
-	<select id="view_path" parameterClass="String" resultClass="String">
-		select path from place2 where place=#place#
-	</select>
+	<!-- 지도 페이지 -->
+		<!-- 장소 불러들이기 -->
+		<select id="place2" resultClass="com.hanyang.tour.model.Place2Dto">
+			select place, img, path, lat, lng
+			from place2
+		</select>
+		<!-- 코스검색 -->
+		<select id="view_path" parameterClass="String" resultClass="String">
+			select path from place2 where place=#place#
+		</select>
+	<!-- 지도 페이지 끝-->
+	
+	<!-- 공지사항 -->
+		<!-- 공지사항 보기 -->
+		<select id="view_notice" resultClass="com.hanyang.tour.model.NoticeDto">
+			select id, date, contents from notice order by date desc
+		</select>
+		<!-- 공지사항 추가 -->
+		<insert id="insert_notice" parameterClass="String">
+			insert
+			into notice (contents)
+			values(#contents#)
+		</insert>
+		<!-- 공지사항 수정 -->
+		<update id="update_notice" parameterClass="com.hanyang.tour.model.NoticeDto">
+			update notice set
+			  contents = #contents#
+			  where id = #id# 
+		</update>
+		<!-- 공지사항 삭제 -->
+		<delete id="delete_notice" parameterClass="int">
+			delete
+			from notice
+			where id = #id#
+		</delete>
+		<!-- 공지사항 1개 조회  -->
+		<select id="view_one_notice" parameterClass="int"
+			resultClass="String">
+			select contents
+			from notice
+			where id = #id#
+		</select>
+	<!-- 공지사항 끝 -->
 </sqlMap>
  
  

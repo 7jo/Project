@@ -88,16 +88,12 @@ h {
 										String result;
 										if (emailId != null) {
 									%>
-
-									<a href="/Tour/page-logout.jsp?url=<%=url%>">로그아웃</a>
-									<%
-										} else {
-									%>
-									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">로그인</a>
-									<%
-										}
-									%>
-								</h4></li>
+									<%=emailId %>님 환영합니다.&nbsp; &nbsp;<a href="/Tour/page-logout.jsp?url=<%=url%>">로그아웃</a> 
+									<%}else{  
+ 									%> 
+ 									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">로그인</a> 
+									<%} %> 
+								</h4></li> 
 						</ul>
 					</div>
 				</div>
@@ -107,11 +103,13 @@ h {
 					<ul class="nav navbar-nav ">
 						<li><a href="index.jsp">홈 </a></li>
 						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
+						<li><a href="/Tour/notice">공지사항 </a></li>
 						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
+		<div class="nav_underbar"></div>
 
 	</nav>
 
@@ -158,12 +156,15 @@ h {
 					</div>
 				</div>
 				<div class="col-sm-7 social-login">
-					
 					<div class="clearfix"></div>
 					<div class="not-member">
 						<p>
-							회원이 아니세요? <a href="page-register.jsp?url=<%=url %>">등록은 여기서</a>
+							회원이 아니세요? <a href="page-register.jsp?url=<%=url %>">지금 가입하세요.</a>
 						</p>
+					</div>
+					<div class="team-member-image">
+						<img alt="loginImg"
+						src="${pageContext.request.contextPath}/img/login.png" />
 					</div>
 				</div>
 			</div>
@@ -181,6 +182,7 @@ h {
 					<ul class="no-list-style footer-navigate-section">
 						<li><a href="index.jsp">홈 </a></li>
 						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
+						<li><a href="/Tour/notice">공지사항 </a></li>
 						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
 

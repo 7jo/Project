@@ -54,7 +54,7 @@ public class ResultController extends HttpServlet {
 			lat = list.get(i).getLat();
 			lng = list.get(i).getLng ();
 			result =result +"var "+key+"= new google.maps.LatLng("+lat+","+lng+");"
-					+ "var contentString_"+i+" = '<img src=\"/Tour/img/"+img+".png\" style=\"width:200px;height:180px;\">"
+					+ "var contentString_"+i+" = '<img src=\"/Tour/img/place_img/"+img+".png\" style=\"width:200px;height:180px;\">"
 							+ "<div></div><a href=\"/Tour/detail?place="+place+"\">Detail view</a>';"
 					+ "var marker_"+i+" = new google.maps.Marker({"
 							+ "position : "+key+","
