@@ -42,10 +42,13 @@ public class RegisterMember extends HttpServlet {
 		mdto.setPwd(request.getParameter("pwd"));
 		mdto.setPwd2(request.getParameter("pwd2"));
 		
+		String url = request.getParameter("url");
+		
 		int signup = MemberDao.getMemberDao().signup(mdto);
 		
 		request.setAttribute("email", mdto.getEmail());
 		request.setAttribute("pwd", mdto.getPwd());
+		request.setAttribute("url", url);
 		String path="/register-sucess.jsp";
 		RequestDispatcher disp  = request.getRequestDispatcher(path);
 		disp.forward(request, response);

@@ -26,7 +26,6 @@
 #wrapper {
 	margin: 0 auto;
 }
-
 </style>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -47,8 +46,17 @@
 <link rel="stylesheet" href="css/main.css">
 
 <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<style>
+li {
+	list-style: none;
+}
+</style>
+<style type="text/css">
+h {
+	font-size: 45px;
+}
+</style>
 <script type="text/javascript">
-
 	function emailcheck() {
 		//alert(document.getElementById("userid").value);
 		//alert($("#userid").val());
@@ -63,14 +71,14 @@
 		});
 
 	}
-	
+
 	function pwdcheck() {
 		var pwd1 = $("#register-password").val();
 		var pwd2 = $("#register-password2").val();
 		var result;
-		if(pwd1 === pwd2){
+		if (pwd1 === pwd2) {
 			result = '<font color="green">OK !! </font>';
-		}else{
+		} else {
 			result = '<font color="red">패스워드가 일치하지 않습니다.</font>'
 		}
 		$("#pwdresult").html(result);
@@ -89,7 +97,11 @@
 		$("#resultview").html(result);
 	}
 </script>
-<style>  li { list-style: none;}   </style>
+<style>
+li {
+	list-style: none;
+}
+</style>
 </head>
 <body>
 	<!--[if lt IE 7]>
@@ -110,22 +122,29 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<li class="logo-wrapper"><a href="index.jsp"> <img
-								src="img/s1.png"><img
-								src="img/t2.png">
+						<li class="logo-wrapper"><a href="index.jsp"> <!-- <img
+								src="img/s1.png"> <img
+								src="img/tour.png">-->
+								<h1>
+									<h> Secret Tour </h>
+								</h1>
 						</a></li>
 						<ul>
 							<li><h4>
 									<%
-								String emailId = (String)session.getAttribute("email");
-								String result;
-								if(emailId !=null){
-								
-							%>
-										<a href="/Tour/page-logout.jsp">로그아웃</a>
-									<%}else{ %>
-									<a href="/Tour/page-login.jsp?islogin=true">로그인</a>
-									<%} %>
+										String emailId = (String) session.getAttribute("email");
+										String url = (String)request.getParameter("url");
+										String result;
+										if (emailId != null) {
+									%>
+									<a href="/Tour/page-logout.jsp?url=<%=url%>">로그아웃</a>
+									<%
+										} else {
+									%>
+									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">로그인</a>
+									<%
+										}
+									%>
 								</h4></li>
 						</ul>
 					</div>
@@ -134,12 +153,9 @@
 				<div class="collapse navbar-collapse target">
 
 					<ul class="nav navbar-nav ">
-
-						<li><a href="index.jsp">Home</a></li>
-						<li><a href="page-team.jsp">About Us</a></li>
-						<li><a href="page-tour.jsp">Tour List</a>
-						<li><a href="page-register.jsp">Register</a></li>
-						<li><a href="page-result.jsp">Search Result</a></li>
+						<li><a href="index.jsp">홈 </a></li>
+						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
+						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
 				</div>
 			</div>
@@ -171,26 +187,29 @@
 						<div class="col-sm-5">
 							<div class="basic-login">
 								<form role="form" action="/Tour/register">
+								<input type=hidden name="url" value="<%=url%>"/>
 									<div class="form-group">
 										<label for="register-username"><i class="icon-user"></i>
-											<b>Email</b></label> <input class="form-control"
-											id="register-email" name="email" type="text"
-											placeholder="" onkeyup="javascript:emailcheck();"><span id="resultview"></span>
+											<b>이름 또는 이메일</b></label> <input class="form-control" id="register-email"
+											name="email" type="text" placeholder=""
+											onkeyup="javascript:emailcheck();"><span
+											id="resultview"></span>
 									</div>
 									<div class="form-group">
 										<label for="register-password"><i class="icon-lock"></i>
-											<b>Password</b></label> <input class="form-control"
+											<b>비밀번호</b></label> <input class="form-control"
 											id="register-password" name="pwd" type="password"
 											placeholder="">
 									</div>
 									<div class="form-group">
 										<label for="register-password2"><i class="icon-lock"></i>
-											<b>Re-enter Password</b></label> <input class="form-control"
+											<b>비밀번호 재확인</b></label> <input class="form-control"
 											id="register-password2" name="pwd2" type="password"
-											placeholder="" onkeyup="javascript:pwdcheck();"><span id="pwdresult"></span>
+											placeholder="" onkeyup="javascript:pwdcheck();"><span
+											id="pwdresult"></span>
 									</div>
 									<div class="form-group">
-										<button type="submit" class="btn pull-right">Register</button>
+										<button type="submit" class="btn pull-right">등록하기</button>
 										<div class="clearfix"></div>
 									</div>
 								</form>
@@ -209,37 +228,29 @@
 			<div class="row">
 
 				<div class="col-footer col-md-3 col-xs-6">
-					<h3>Navigate</h3>
+					<h3>메뉴</h3>
+
 					<ul class="no-list-style footer-navigate-section">
-					<li><a href="index.jsp">Home</a></li>
-						<li><a href="page-team.jsp">About Us</a></li>
-						<li><a href="page-tour.jsp">Tour List</a>
-						<li><a href="page-register.jsp">Register</a></li>
-						<li><a href="page-result.jsp">Search Result</a></li>
+						<li><a href="index.jsp">홈 </a></li>
+						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
+						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
+
 				</div>
 
 				<div class="col-footer col-md-4 col-xs-6">
-					<h3>Contacts</h3>
+					<h3>오시는 길</h3>
 					<p class="contact-us-details">
-						<b>Address:</b> 123 Fake Street, LN1 2ST, London, United Kingdom<br />
-						<b>Phone:</b> +44 123 654321<br /> <b>Fax:</b> +44 123 654321<br />
-						<b>Email:</b> <a href="mailto:getintoutch@yourcompanydomain.com">getintoutch@yourcompanydomain.com</a>
+						<b>주소: </b> 경기도 안산시 상록구 한양대학로 55, 4공학관 1층 SMaSH <br /> <b>연락처:
+						</b> +82 031 400 4040 <br /> <b>메일주소: </b> <a href="">kyh900423@hanyang.ac.kr</a>
 					</p>
 				</div>
-				<div class="col-footer col-md-2 col-xs-6">
-					<h3>Stay Connected</h3>
-					<ul class="footer-stay-connected no-list-style">
-						<li><a href="http://www.facebook.com" class="facebook"></a></li>
-						<li><a href="http://www.twitter.com" class="twitter"></a></li>
-						<li><a href="http://plus.google.com" class="googleplus"></a></li>
-					</ul>
-				</div>
+
 			</div>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="footer-copyright">&copy; 2015 All rights
-						reserved.</div>
+						reserved from Team_Secret</div>
 				</div>
 			</div>
 		</div>

@@ -58,7 +58,6 @@ font-size:45px;
 								src="img/tour.png">-->
 								<h1><h> Secret Tour </h></h1> 
 						</a></li>
-						</ul>
 						<ul>
 							<li><h4> 
  									<% 
@@ -68,10 +67,10 @@ font-size:45px;
 							if(emailId !=null){ 
 							 
  							%> 
- 									<a href="/Tour/page-logout.jsp?url=<%=url%>">Logout</a> 
+ 									<a href="/Tour/page-logout.jsp?url=<%=url%>">로그아웃</a> 
 									<%}else{  
  									%> 
- 									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">Login</a> 
+ 									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">로그인</a> 
 									<%} %> 
 								</h4></li> 
 
@@ -79,14 +78,12 @@ font-size:45px;
 					</div>
 				</div>
 
-				<div class="collapse navbar-collapse target">
+				<div class="collapse navbar-collapse target" >
 
-					<ul class="nav navbar-nav ">
-						<li><a href="index.jsp">Home</a></li>
-						<li><a href="page-team.jsp">About Us</a></li>
-						<li><a href="page-tour.jsp">Tour List</a>
-						<li><a href="page-register.jsp">Register</a></li>
-						<li><a href="page-result.jsp">Search Result</a></li>
+					<ul class="nav navbar-nav " >
+						<li><a href="index.jsp">홈 </a></li>
+						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
+						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
 				</div>
 			</div>
@@ -177,33 +174,25 @@ font-size:45px;
 			<div class="row">
 
 				<div class="col-footer col-md-3 col-xs-6">
-					<h3>Navigate</h3>
+					<h3>메뉴 </h3>
+				
 					<ul class="no-list-style footer-navigate-section">
-					<li><a href="index.jsp">Home</a></li>
-						<li><a href="page-team.jsp">About Us</a></li>
-						<li><a href="page-tour.jsp">Tour List</a>
-						<li><a href="page-register.jsp">Register</a></li>
-						<li><a href="page-result.jsp">Search Result</a></li>
-						
+				     	<li><a href="index.jsp">홈 </a></li>
+						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
+						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
+			
 				</div>
 
 				<div class="col-footer col-md-4 col-xs-6">
-					<h3>Contacts</h3>
+					<h3>오시는 길 </h3>
 					<p class="contact-us-details">
-						<b>Address:</b> 123 Fake Street, LN1 2ST, London, United Kingdom<br />
-						<b>Phone:</b> +44 123 654321<br /> <b>Fax:</b> +44 123 654321<br />
-						<b>Email:</b> <a href="mailto:getintoutch@yourcompanydomain.com">getintoutch@yourcompanydomain.com</a>
+						<b>주소: </b> 경기도 안산시 상록구 한양대학로 55, 4공학관 1층 SMaSH <br />
+						<b>연락처: </b> +82 031 400 4040 <br /> 
+						<b>메일주소: </b> <a href="">kyh900423@hanyang.ac.kr</a>
 					</p>
 				</div>
-				<div class="col-footer col-md-2 col-xs-6">
-					<h3>Stay Connected</h3>
-					<ul class="footer-stay-connected no-list-style">
-						<li><a href="http://www.facebook.com" class="facebook"></a></li>
-						<li><a href="http://www.twitter.com" class="twitter"></a></li>
-						<li><a href="http://plus.google.com" class="googleplus"></a></li>
-					</ul>
-				</div>
+		
 			</div>
 			<div class="row">
 				<div class="col-md-12">
