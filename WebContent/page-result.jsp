@@ -773,7 +773,7 @@ html, body {
 													</div></span><label style="vertical-align: middle; cursor: pointer;">지형</label>
 											</div>
 										</div>
-									</div>
+								 	</div>
 									<div class="gm-style-mtc" style="float: left;">
 										<div draggable="false" title="위성 이미지 보기"
 											style="direction: ltr; overflow: hidden; text-align: center; position: relative; color: rgb(86, 86, 86); font-family: Roboto, Arial, sans-serif; -webkit-user-select: none; font-size: 11px; padding: 1px 6px; border-bottom-right-radius: 2px; border-top-right-radius: 2px; -webkit-background-clip: padding-box; border-width: 1px 1px 1px 0px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-top-color: rgba(0, 0, 0, 0.14902); border-right-color: rgba(0, 0, 0, 0.14902); border-bottom-color: rgba(0, 0, 0, 0.14902); box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; min-width: 23px; background-color: rgb(255, 255, 255); background-clip: padding-box;">위성</div>
