@@ -27,7 +27,18 @@
 		<![endif]-->
 <link rel="stylesheet" href="css/main.css">
 
+
 <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<style>
+li {
+	list-style: none;
+}
+</style>
+<style type="text/css">
+h {
+	font-size: 45px;
+}
+</style>
 <script src="/Tour/js/jquery-map.js"></script>
 <script type="text/javascript">
 	var map;
@@ -95,10 +106,14 @@
 		result = data.split(":");
 		var place = result[0];
 		var path = result[1];
-		
+
 		var splitPath = path.split("->");
 		drawLine(splitPath);
-		var recPath = '<a href="${pageContext.request.contextPath}/detail?place='+place+'" class="list-group-item"> <i class="fa fa-comment fa-fw"></i>&nbsp;&nbsp;&nbsp;<img src="img/bt.png">&nbsp;'+path+' <span class="pull-right text-muted small"><em>detail>></em></span></a>';
+		var recPath = '<a href="${pageContext.request.contextPath}/detail?place='
+				+ place
+				+ '" class="list-group-item"> <i class="fa fa-comment fa-fw"></i>&nbsp;&nbsp;&nbsp;<img src="img/bt.png">&nbsp;'
+				+ path
+				+ ' <span class="pull-right text-muted small"><em>detail>></em></span></a>';
 		$("#recmdlist").html(recPath);
 	}
 	function drawLine(result) {
@@ -178,8 +193,12 @@ html, body {
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<li class="logo-wrapper"><a href="index.jsp"> <img
-								src="img/s1.png"><img src="img/t2.png">
+						<li class="logo-wrapper"><a href="index.jsp"> <!-- <img
+								src="img/s1.png"> <img
+								src="img/tour.png">-->
+								<h1>
+									<h> Secret Tour </h>
+								</h1>
 						</a></li>
 						<ul>
 							<li><h4>
@@ -189,11 +208,11 @@ html, body {
 										String result;
 										if (emailId != null) {
 									%>
-									<a href="/Tour/page-logout.jsp?url=<%=url%>">Logout</a>
+									<a href="/Tour/page-logout.jsp?url=<%=url%>">로그아웃</a>
 									<%
 										} else {
 									%>
-									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">Login</a>
+									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">로그인</a>
 									<%
 										}
 									%>
@@ -205,12 +224,9 @@ html, body {
 				<div class="collapse navbar-collapse target">
 
 					<ul class="nav navbar-nav ">
-
-						<li><a href="index.jsp">Home</a></li>
-						<li><a href="page-team.jsp">About Us</a></li>
-						<li><a href="page-tour.jsp">Tour List</a>
-						<li><a href="page-register.jsp">Register</a></li>
-						<li><a href="page-result.jsp">Search Result</a></li>
+						<li><a href="index.jsp">홈 </a></li>
+						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
+						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
 				</div>
 			</div>
@@ -841,7 +857,7 @@ html, body {
 								</div>
 								<!-- /.panel-heading -->
 								<div class="panel-body">
-								<!-- 리스트 추가되는 곳  -->
+									<!-- 리스트 추가되는 곳  -->
 									<div id="recmdlist" class="list-group"></div>
 								</div>
 							</div>
@@ -872,32 +888,24 @@ html, body {
 			<div class="row">
 
 				<div class="col-footer col-md-3 col-xs-6">
-					<h3>Navigate</h3>
+					<h3>메뉴</h3>
+
 					<ul class="no-list-style footer-navigate-section">
-						<li><a href="index.jsp">Home</a></li>
-						<li><a href="page-team.jsp">About Us</a></li>
-						<li><a href="page-tour.jsp">Tour List</a>
-						<li><a href="page-register.jsp">Register</a></li>
-						<li><a href="page-result.jsp">Search Result</a></li>
+						<li><a href="index.jsp">홈 </a></li>
+						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
+						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
+
 				</div>
 
 				<div class="col-footer col-md-4 col-xs-6">
-					<h3>Contacts</h3>
+					<h3>오시는 길</h3>
 					<p class="contact-us-details">
-						<b>Address:</b> 123 Fake Street, LN1 2ST, London, United Kingdom<br />
-						<b>Phone:</b> +44 123 654321<br /> <b>Fax:</b> +44 123 654321<br />
-						<b>Email:</b> <a href="mailto:getintoutch@yourcompanydomain.com">getintoutch@yourcompanydomain.com</a>
+						<b>주소: </b> 경기도 안산시 상록구 한양대학로 55, 4공학관 1층 SMaSH <br /> <b>연락처:
+						</b> +82 031 400 4040 <br /> <b>메일주소: </b> <a href="">kyh900423@hanyang.ac.kr</a>
 					</p>
 				</div>
-				<div class="col-footer col-md-2 col-xs-6">
-					<h3>Stay Connected</h3>
-					<ul class="footer-stay-connected no-list-style">
-						<li><a href="http://www.facebook.com" class="facebook"></a></li>
-						<li><a href="http://www.twitter.com" class="twitter"></a></li>
-						<li><a href="http://plus.google.com" class="googleplus"></a></li>
-					</ul>
-				</div>
+
 			</div>
 			<div class="row">
 				<div class="col-md-12">

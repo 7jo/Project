@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -26,7 +27,16 @@
 <link rel="stylesheet" href="css/main.css">
 
 <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-<style>  li { list-style: none;}   </style>
+<style>
+li {
+	list-style: none;
+}
+</style>
+<style type="text/css">
+h {
+	font-size: 45px;
+}
+</style>
 </head>
 <body>
 	<!--[if lt IE 7]>
@@ -35,7 +45,7 @@
 
 
 	<!-- Navigation & Logo-->
-<nav class="navbar navbar-default navbar-fixed-top">
+	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="mainmenu-wrapper">
 			<div class="container-fluid">
 				<div class="menuextras">
@@ -46,22 +56,28 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<li class="logo-wrapper"><a href="index.jsp"> <img
-								src="img/s1.png"><img
-								src="img/t2.png">
+						<li class="logo-wrapper"><a href="index.jsp"> <!-- <img
+								src="img/s1.png"> <img
+								src="img/tour.png">-->
+								<h1>
+									<h> Secret Tour </h>
+								</h1>
 						</a></li>
 						<ul>
 							<li><h4>
 									<%
-								String emailId = (String)session.getAttribute("email");
-								String result;
-								if(emailId !=null){
-								
-							%>
-									<a href="/Tour/page-logout.jsp">Logout</a>
-									<%}else{ %>
-									<a href="/Tour/page-login.jsp?islogin=true">Login</a>
-									<%} %>
+										String emailId = (String) session.getAttribute("email");
+										String result;
+										if (emailId != null) {
+									%>
+									<a href="/Tour/page-logout.jsp">로그아웃</a>
+									<%
+										} else {
+									%>
+									<a href="/Tour/page-login.jsp?islogin=true">로그인</a>
+									<%
+										}
+									%>
 								</h4></li>
 						</ul>
 					</div>
@@ -70,12 +86,9 @@
 				<div class="collapse navbar-collapse target">
 
 					<ul class="nav navbar-nav ">
-
-					<li><a href="index.jsp">Home</a></li>
-						<li><a href="page-team.jsp">About Us</a></li>
-						<li><a href="page-tour.jsp">Tour List</a>
-						<li><a href="page-register.jsp">Register</a></li>
-						<li><a href="page-result.jsp">Search Result</a></li>
+						<li><a href="index.jsp">홈 </a></li>
+						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
+						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
 				</div>
 			</div>
@@ -87,70 +100,66 @@
 
 
 	<!-- Page Title -->
-		<div class="section section-breadcrumbs">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<h1>Credits</h1>
-					</div>
+	<div class="section section-breadcrumbs">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1>Credits</h1>
 				</div>
 			</div>
 		</div>
-        
-        <div class="section">
-	        <div class="container">
-	        	<!-- 내용넣기 -->
-	        </div>
-	    </div>
+	</div>
+
+	<div class="section">
+		<div class="container">
+			<!-- 내용넣기 -->
+		</div>
+	</div>
 
 
-	
 	<!-- Footer -->
 	<div class="footer">
 		<div class="container">
 			<div class="row">
 
 				<div class="col-footer col-md-3 col-xs-6">
-					<h3>Navigate</h3>
+					<h3>메뉴</h3>
+
 					<ul class="no-list-style footer-navigate-section">
-						<li><a href="index.jsp">Home</a></li>
-						<li><a href="page-team.jsp">About Us</a></li>
-						<li><a href="page-tour.jsp">Tour List</a>
-						<li><a href="page-register.jsp">Register</a></li>
-						<li><a href="page-result.jsp">Search Result</a></li>
+						<li><a href="index.jsp">홈 </a></li>
+						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
+						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
+
 				</div>
 
 				<div class="col-footer col-md-4 col-xs-6">
-					<h3>Contacts</h3>
+					<h3>오시는 길</h3>
 					<p class="contact-us-details">
-						<b>Address:</b> 123 Fake Street, LN1 2ST, London, United Kingdom<br />
-						<b>Phone:</b> +44 123 654321<br /> <b>Fax:</b> +44 123 654321<br />
-						<b>Email:</b> <a href="mailto:getintoutch@yourcompanydomain.com">getintoutch@yourcompanydomain.com</a>
+						<b>주소: </b> 경기도 안산시 상록구 한양대학로 55, 4공학관 1층 SMaSH <br /> <b>연락처:
+						</b> +82 031 400 4040 <br /> <b>메일주소: </b> <a href="">kyh900423@hanyang.ac.kr</a>
 					</p>
 				</div>
-				<div class="col-footer col-md-2 col-xs-6">
-					<h3>Stay Connected</h3>
-					<ul class="footer-stay-connected no-list-style">
-						<li><a href="http://www.facebook.com" class="facebook"></a></li>
-						<li><a href="http://www.twitter.com" class="twitter"></a></li>
-						<li><a href="http://plus.google.com" class="googleplus"></a></li>
-					</ul>
-				</div>
+
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<div class="footer-copyright">&copy; 2015 All
-						rights reserved.</div>
+					<div class="footer-copyright">&copy; 2015 All rights
+						reserved.</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
+
 	<!-- Javascripts -->
 	<script
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
+	<script>
+		window.jQuery
+				|| document
+						.write('<script src="js/jquery-1.9.1.min.js"><\/script>')
+	</script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
 	<script src="js/jquery.fitvids.js"></script>
