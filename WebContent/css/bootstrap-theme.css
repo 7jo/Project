@@ -43,6 +43,9 @@
   border-color: #dbdbdb;
   border-color: #ccc;
 }
+.btn-delete {
+  background-image:url("img/close-button.png");
+}
 .btn-default:hover,
 .btn-default:focus {
   background-color: #e0e0e0;

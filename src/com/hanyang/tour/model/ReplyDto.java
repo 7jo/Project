@@ -3,7 +3,7 @@ package com.hanyang.tour.model;
 public class ReplyDto {
 	private int id;
 	private String date;
-	private String place;
+	private String pid;
 	private String user;
 	private String comment;
 	
@@ -20,11 +20,11 @@ public class ReplyDto {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public String getPlace() {
-		return place;
+	public String getPid() {
+		return pid;
 	}
-	public void setPlace(String place) {
-		this.place = place;
+	public void setPid(String pid) {
+		this.pid = pid;
 	}
 	
 	public String getUser() {

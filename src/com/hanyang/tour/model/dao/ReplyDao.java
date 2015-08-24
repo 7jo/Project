@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.hanyang.tour.config.sqlMapConfig;
+import com.hanyang.tour.model.Place2Dto;
 import com.hanyang.tour.model.ReplyDto;
 
 public class ReplyDao {

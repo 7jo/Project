@@ -2,6 +2,7 @@
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
+	request.setCharacterEncoding("UTF-8");
 	String emailId = (String) session.getAttribute("email");
 	String url = "page-notice-admin.jsp";
 	String result;

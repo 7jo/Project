@@ -36,6 +36,7 @@ li {
 h {
    font-size: 45px;
 }
+img { max-width: 100%; }
 </style>
 </head>
 <body>

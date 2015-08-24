@@ -21,7 +21,7 @@
 		</select>
 		<!--관광지 정보 검색 -->
 		<select id="view_pid" parameterClass="String"
-			resultClass="com.hanyang.tour.model.PlaceDto">
+			resultClass="com.hanyang.tour.model.Place2Dto">
 			select p.id, p.place, p.img
 			from place2 p
 			where p.place = #place#
@@ -33,6 +33,13 @@
 			values(#date#, #id#, #user#, #comment#)
 	
 		</insert>
+		<!-- 댓 삭제 -->
+		<delete id="delete_comment" parameterClass="mdto">
+			delete
+			from reply
+			where date = #date# and pid = #pid# and user=#user#
+		</delete>
+		
 	<!-- 댓글 페이지 종료 -->
 
 	<!-- 회원가입 페이지 -->

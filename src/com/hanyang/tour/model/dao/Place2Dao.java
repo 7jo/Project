@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.hanyang.tour.config.sqlMapConfig;
 import com.hanyang.tour.model.Place2Dto;
+import com.hanyang.tour.model.PlaceDto;
 
 public class Place2Dao {
 	private static Place2Dao place2Dao;
@@ -35,6 +36,17 @@ public class Place2Dao {
 	public String getPath(String place){
 		try {
 			return  (String)sqlMapConfig.getSqlMapClient().queryForObject("view_path",place);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+	public Place2Dto getPdto(String place) {
+
+		try {
+			return (Place2Dto) sqlMapConfig.getSqlMapClient().queryForObject("view_pid", place);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

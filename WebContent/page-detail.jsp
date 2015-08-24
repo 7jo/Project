@@ -6,30 +6,27 @@
 	String pname;
 	String pid;
 	String imgSrc;
-	if(request.getAttribute("pname") != null){
-		pname= request.getAttribute("pname").toString();
+	if (request.getAttribute("pname") != null) {
+		pname = request.getAttribute("pname").toString();
 		session.setAttribute("pname", pname);
-	}else
-		pname = (String)session.getAttribute("pname");
-	
-	
-	if(request.getAttribute("pid") != null){
+	} else
+		pname = (String) session.getAttribute("pname");
+
+	if (request.getAttribute("pid") != null) {
 		pid = request.getAttribute("pid").toString();
 		session.setAttribute("pid", pid);
-	}else
-		pid = (String)session.getAttribute("pid");
-	
-	if(request.getAttribute("pimg") != null){
+	} else
+		pid = (String) session.getAttribute("pid");
+
+	if (request.getAttribute("pimg") != null) {
 		imgSrc = request.getAttribute("pimg").toString();
-		session.setAttribute("imgSrc", imgSrc);
-	}
-	else
-		imgSrc = (String)session.getAttribute("imgSrc");
-	
+		session.setAttribute("pimg", imgSrc);
+	} else
+		imgSrc = (String) session.getAttribute("pimg");
+
 	String id = (String) session.getAttribute("email");
 	if (id == null)
 		id = "";
-	
 %>
 
 <!DOCTYPE html>
@@ -67,8 +64,12 @@ li {
 h {
 	font-size: 45px;
 }
+
+img {
+	max-width: 100%;
+}
 </style>
-<script src ="js/modernizr-2.6.2-respond-1.1.0.min.js "></script>
+<script src="js/modernizr-2.6.2-respond-1.1.0.min.js "></script>
 <script src="//code.jquery.com /jquery-1.11.3.min.js "> </script>
 
 <script type="text/javascript">
@@ -127,7 +128,7 @@ h {
 		var result;
 		var date = js_yyyy_mm_dd_hh_mm_ss();
 		var id = "<%=id%>";
-		result = '<td><strong><a>' + id+ '</a></strong></td><td>'
+		result = '<td><strong><a>' + id + '</a></strong></td><td>'
 				+ $("#comment").val() + '</td><td>' + date + '</td>';
 		$("#comment_table").html(result);
 	}
@@ -177,15 +178,16 @@ a {
 										String result;
 										if (!id.equals("")) {
 									%>
-									<%=id %>님 환영합니다.&nbsp; &nbsp;<a href="/Tour/page-logout.jsp?url=<%=url%>">로그아웃</a> 
+									<%=id%>님 환영합니다.&nbsp; &nbsp;<a
+										href="/Tour/page-logout.jsp?url=<%=url%>">로그아웃</a>
 									<%
-									}else{ 
+										} else {
 									%>
- 									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">로그인</a> 
+									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">로그인</a>
 									<%
-									} 
-									%> 
-								</h4></li> 
+										}
+									%>
+								</h4></li>
 						</ul>
 					</div>
 				</div>
@@ -259,12 +261,22 @@ a {
 								<table width="100%">
 									<col width="20%">
 									<col width="50%">
-									<col width="30%">
+									<col width="25%">
+									<col width="5%">
 									<c:forEach items="${mlist}" var="reply">
 										<tr>
 											<td><strong><a>${reply.user}</a></strong></td>
 											<td>${reply.comment}</td>
 											<td>${reply.date}</td>
+											<td><form action="/Tour/detail" method="post">
+												<input type=hidden name="act" value="delete">
+												<input type=hidden name="pname" value="<%=pname%>">
+												<input type=hidden name="pid" value="<%=pid%>">
+												<input type=hidden name="pimg" value="<%=imgSrc%>">
+												<input type=hidden name="ck_date" value="${reply.date}">
+												<input type=hidden name="ck_user" value="${reply.user}">
+												<input type="submit" class="btn btn-delete ">
+											</form></td>
 										</tr>
 									</c:forEach>
 									<tr id="comment_table"></tr>
@@ -274,26 +286,33 @@ a {
 					<br> <br>
 				</div>
 				<div class="panel-footer">
-				<br><br><br><br>
+					<br>
+					<br>
+					<br>
+					<br>
 					<table>
 						<tr>
-						<%
-							if(id.equals("")){
-						%>
-								<td><strong class="primary-font">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;로그인이 되어있지 않습니다.&nbsp;</strong></td>
-								<td><a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">
-										<button class="btn btn-warning btn-sm" id="btn-chat">로그인 하러가기</button></a></td>
+							<%
+								if (id.equals("")) {
+							%>
+							<td><strong class="primary-font">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;로그인이
+									되어있지 않습니다.&nbsp;</strong></td>
+							<td><a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">
+									<button class="btn btn-warning btn-sm" id="btn-chat">로그인
+										하러가기</button>
+							</a></td>
 						</tr>
 					</table>
-						<%}else{ %>
-						
-								<td><strong class="primary-font">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;작성자
-										:</strong></td>
-								<td><strong class="primary-font" id="userid">&nbsp;<%=id%></strong></td>
-								</tr>
+					<%
+						} else {
+					%>
+
+					<td><strong class="primary-font">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;작성자
+							:</strong></td>
+					<td><strong class="primary-font" id="userid">&nbsp;<%=id%></strong></td>
+					</tr>
 					</table>
-					<br>
-					<img src="img/user.png" align="left">
+					<br> <img src="img/user.png" align="left">
 					<div class="input-group">
 						<input id="comment" type="text" class="form-control input-sm"
 							placeholder="후기를 입력하세요." /> <span class="input-group-btn">
@@ -302,8 +321,10 @@ a {
 
 						</span>
 					</div>
-					<% }%>
-						
+					<%
+						}
+					%>
+
 				</div>
 				<!-- End Open Vacancies List -->
 				<div class="col-md-4 col-sm-6">
