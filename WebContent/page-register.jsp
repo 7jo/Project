@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%  request.setCharacterEncoding("UTF-8"); %>	
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -133,16 +134,20 @@ li {
 							<li><h4>
 									<%
 										String emailId = (String) session.getAttribute("email");
-										String url = (String)request.getParameter("url");
+										String url = (String) request.getParameter("url");
 										String result;
 										if (emailId != null) {
 									%>
-									<%=emailId %>님 환영합니다.&nbsp; &nbsp;<a href="/Tour/page-logout.jsp?url=<%=url%>">로그아웃</a> 
-									<%}else{  
- 									%> 
- 									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">로그인</a> 
-									<%} %> 
-								</h4></li> 
+									<%=emailId%>님 환영합니다.&nbsp; &nbsp;<a
+										href="/Tour/page-logout.jsp?url=<%=url%>">로그아웃</a>
+									<%
+										} else {
+									%>
+									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">로그인</a>
+									<%
+										}
+									%>
+								</h4></li>
 						</ul>
 					</div>
 				</div>
@@ -151,8 +156,8 @@ li {
 
 					<ul class="nav navbar-nav ">
 						<li><a href="index.jsp">홈 </a></li>
-						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="/Tour/notice">공지사항 </a></li>
+						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
 				</div>
@@ -186,11 +191,11 @@ li {
 						<div class="col-sm-5">
 							<div class="basic-login">
 								<form role="form" action="/Tour/register">
-								<input type=hidden name="url" value="<%=url%>"/>
+									<input type=hidden name="url" value="<%=url%>" />
 									<div class="form-group">
 										<label for="register-username"><i class="icon-user"></i>
-											<b>이름 또는 이메일</b></label> <input class="form-control" id="register-email"
-											name="email" type="text" placeholder=""
+											<b>이름 또는 이메일</b></label> <input class="form-control"
+											id="register-email" name="email" type="text" placeholder=""
 											onkeyup="javascript:emailcheck();"><span
 											id="resultview"></span>
 									</div>
@@ -231,8 +236,8 @@ li {
 
 					<ul class="no-list-style footer-navigate-section">
 						<li><a href="index.jsp">홈 </a></li>
-						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="/Tour/notice">공지사항 </a></li>
+						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
 
@@ -249,8 +254,8 @@ li {
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<div class="footer-copyright">&copy; 2015 All rights
-						reserved from Team_Secret</div>
+					<div class="footer-copyright">&copy; 2015 All rights reserved
+						from Team_Secret</div>
 				</div>
 			</div>
 		</div>

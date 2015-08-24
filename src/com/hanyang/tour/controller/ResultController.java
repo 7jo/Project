@@ -19,11 +19,13 @@ import com.hanyang.tour.model.dao.Place2Dao;
 /**
  * Servlet implementation class ResultController
  */
+
 @WebServlet("/result")
 public class ResultController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		execute(request, response);
 	}
 
@@ -34,7 +36,9 @@ public class ResultController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		execute(request, response);
 	}
+	
 	protected void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		response.setContentType("text/html; charset=utf-8");
 		System.out.println("test!!");
 		
 		String resultStart = "var hashmap = new Map(); ";
@@ -48,13 +52,15 @@ public class ResultController extends HttpServlet {
 		List<Place2Dto> list = Place2Dao.getMemberDao().list();
 		for(int i = 0; i < list.size(); i++){
 			place = list.get(i).getPlace();
+			
 			img = list.get(i).getImg();
 			key = "place"+i;
 			recpath = list.get(i).getPath();
+			System.out.println(recpath);
 			lat = list.get(i).getLat();
 			lng = list.get(i).getLng ();
 			result =result +"var "+key+"= new google.maps.LatLng("+lat+","+lng+");"
-					+ "var contentString_"+i+" = '<img src=\"/Tour/img/place_img/"+img+".png\" style=\"width:200px;height:180px;\">"
+					+ "var contentString_"+i+" = '<h4>&nbsp;&nbsp;장소 : "+place+"</h4><br><img src=\"/Tour/img/place_img/"+img+".png\" style=\"width:200px;height:180px;\">"
 							+ "<div></div><a href=\"/Tour/detail?place="+place+"\">Detail view</a>';"
 					+ "var marker_"+i+" = new google.maps.Marker({"
 							+ "position : "+key+","
@@ -68,6 +74,7 @@ public class ResultController extends HttpServlet {
 					+ "hashmap.put(\""+place+"\","+key+");";
 		}
 		result = resultStart+result;
+	
 		PrintWriter out = response.getWriter();
 		out.print(result);
 	}

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%  request.setCharacterEncoding("UTF-8"); %>	
 <%@ page import="java.util.*, java.text.*"%>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -10,7 +12,7 @@
 <!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="X-UA-Compatible" content="text/html; charset=utf-8">
 <title>Secret_Tour</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width">
@@ -28,7 +30,7 @@
 <link rel="stylesheet" href="css/main.css">
 
 
-<script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<script src="js/modernizr-2.6.2-respond-1.1.0.min.js" charset="utf-8"></script>
 <style>
 li {
 	list-style: none;
@@ -39,7 +41,7 @@ h {
 	font-size: 45px;
 }
 </style>
-<script src="/Tour/js/jquery-map.js"></script>
+<script src="/Tour/js/jquery-map.js" charset="utf-8"></script>
 <script type="text/javascript">
 	var map;
 	var real_center;
@@ -80,7 +82,7 @@ h {
 	}
 	function loadMarker() {
 		$.ajax({
-			type : "GET",
+			type : "POST",
 			url : "/Tour/result",
 			success : getScript
 		});
@@ -94,7 +96,8 @@ h {
 	function clickInMap(position_name) {
 		//클릭시 이벤트
 		$.ajax({
-			type : "GET",
+			type : "POST",
+			ContentType : 'application/x-www-form-urlencoded; charset=UTF-8',
 			url : "/Tour/list",
 			data : {
 				"title" : position_name
@@ -106,7 +109,6 @@ h {
 		result = data.split(":");
 		var place = result[0];
 		var path = result[1];
-
 		var splitPath = path.split("->");
 		drawLine(splitPath);
 		var recPath = '<a href="${pageContext.request.contextPath}/detail?place='
@@ -203,17 +205,22 @@ html, body {
 						<ul>
 							<li><h4>
 									<%
+										 request.setCharacterEncoding("UTF-8");
 										String emailId = (String) session.getAttribute("email");
 										String url = "page-result.jsp";
 										String result;
 										if (emailId != null) {
 									%>
-									<%=emailId %>님 환영합니다.&nbsp; &nbsp;<a href="/Tour/page-logout.jsp?url=<%=url%>">로그아웃</a> 
-									<%}else{  
- 									%> 
- 									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">로그인</a> 
-									<%} %> 
-								</h4></li> 
+									<%=emailId%>님 환영합니다.&nbsp; &nbsp;<a
+										href="/Tour/page-logout.jsp?url=<%=url%>">로그아웃</a>
+									<%
+										} else {
+									%>
+									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">로그인</a>
+									<%
+										}
+									%>
+								</h4></li>
 						</ul>
 					</div>
 				</div>
@@ -222,8 +229,8 @@ html, body {
 
 					<ul class="nav navbar-nav ">
 						<li><a href="index.jsp">홈 </a></li>
-						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="/Tour/notice">공지사항 </a></li>
+						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
 				</div>
@@ -788,7 +795,7 @@ html, body {
 													</div></span><label style="vertical-align: middle; cursor: pointer;">지형</label>
 											</div>
 										</div>
-								 	</div>
+									</div>
 									<div class="gm-style-mtc" style="float: left;">
 										<div draggable="false" title="위성 이미지 보기"
 											style="direction: ltr; overflow: hidden; text-align: center; position: relative; color: rgb(86, 86, 86); font-family: Roboto, Arial, sans-serif; -webkit-user-select: none; font-size: 11px; padding: 1px 6px; border-bottom-right-radius: 2px; border-top-right-radius: 2px; -webkit-background-clip: padding-box; border-width: 1px 1px 1px 0px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-top-color: rgba(0, 0, 0, 0.14902); border-right-color: rgba(0, 0, 0, 0.14902); border-bottom-color: rgba(0, 0, 0, 0.14902); box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; min-width: 23px; background-color: rgb(255, 255, 255); background-clip: padding-box;">위성</div>
@@ -844,19 +851,19 @@ html, body {
 						</tr>
 						-->
 
-					<div class="col-md-4">
-							<div class="panel panel-default">
+				<div class="col-md-4">
+					<div class="panel panel-default">
 
-								<div class="panel-heading">
-									<img src="img/list.png"> &nbsp; Location
-								</div>
-								<!-- /.panel-heading -->
-								<div class="panel-body">
-									<!-- 리스트 추가되는 곳  -->
-									<div id="recmdlist" class="list-group"></div>
-								</div>
-							</div>
+						<div class="panel-heading">
+							<img src="img/list.png"> &nbsp; Location
+						</div>
+						<!-- /.panel-heading -->
+						<div class="panel-body">
+							<!-- 리스트 추가되는 곳  -->
+							<div id="recmdlist" class="list-group"></div>
+						</div>
 					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -882,8 +889,8 @@ html, body {
 
 					<ul class="no-list-style footer-navigate-section">
 						<li><a href="index.jsp">홈 </a></li>
-						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="/Tour/notice">공지사항 </a></li>
+						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
 

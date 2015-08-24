@@ -2,6 +2,7 @@
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*, java.text.*"%>
+<%  request.setCharacterEncoding("UTF-8"); %>
 <%
 	String pname;
 	String pid;
@@ -261,22 +262,12 @@ a {
 								<table width="100%">
 									<col width="20%">
 									<col width="50%">
-									<col width="25%">
-									<col width="5%">
+									<col width="30%">
 									<c:forEach items="${mlist}" var="reply">
 										<tr>
 											<td><strong><a>${reply.user}</a></strong></td>
 											<td>${reply.comment}</td>
 											<td>${reply.date}</td>
-											<td><form action="/Tour/detail" method="post">
-												<input type=hidden name="act" value="delete">
-												<input type=hidden name="pname" value="<%=pname%>">
-												<input type=hidden name="pid" value="<%=pid%>">
-												<input type=hidden name="pimg" value="<%=imgSrc%>">
-												<input type=hidden name="ck_date" value="${reply.date}">
-												<input type=hidden name="ck_user" value="${reply.user}">
-												<input type="submit" class="btn btn-delete ">
-											</form></td>
 										</tr>
 									</c:forEach>
 									<tr id="comment_table"></tr>

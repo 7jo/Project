@@ -24,6 +24,7 @@ public class NoticeController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		execute(request, response);
 	}
 
@@ -38,6 +39,7 @@ public class NoticeController extends HttpServlet {
 	}
 
 	protected void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		act = request.getParameter("act");
 		String path;
 		if (act == null) {
@@ -53,6 +55,7 @@ public class NoticeController extends HttpServlet {
 			disp.forward(request, response);
 		}
 		else{
+			request.setCharacterEncoding("UTF-8");
 			path = "/page-notice-check.jsp";
 			String contents = request.getParameter("contents");
 			int insert = 0;
