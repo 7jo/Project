@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%  request.setCharacterEncoding("UTF-8"); %>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -9,7 +11,6 @@
 <html class="no-js">
 <!--<![endif]-->
 <head>
-
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title>Secret_Tour</title>
@@ -19,8 +20,7 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/icomoon-social.css">
 <link
-	href='http://font
-.googleapis.com/css?family=Open+Sans:400,700,600,800'
+	href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800'
 	rel='stylesheet' type='text/css'>
 
 <link rel="stylesheet" href="css/leaflet.css" />
@@ -52,7 +52,6 @@ h {
 			<div class="container-fluid">
 				<div class="menuextras">
 					<div class="extras">
-
 						<button type="button" data-target=".target" data-toggle="collapse"
 							class="navbar-toggle">
 							<span class="sr-only">Toggle navigation</span> <span
@@ -109,29 +108,31 @@ h {
 	<!-- Homepage Slider -->
 	<div class="homepage-slider">
 		<div id="sequence">
+		<br>
 			<ul class="sequence-canvas">
 				<!-- Slide 1 -->
-				<li class="bg3">
-					<!-- Slide Title -->
-					<h2 class="title">Secret Tour</h2> <!-- Slide Text -->
-					<h3 class="subtitle">꼭 가봐야할 숨은 보석같은 여행지 </h3> <!-- Slide Image
+				<li class="bg15">
+					<!-- Slide Title --> <br>
+					<h2 class="title" style="color: black;">꼭 가봐야할 숨은 보석같은 <br>여행지를
+						공유하세요~!</h2> <!-- Slide Text -->
+					<h3 class="subtitle" style="color: black;"></h3> <!-- Slide Image
 						 <img class="slide-img" src="img/homepage-slider/slide1.png"
 					alt="Slide 1" /> -->
 				</li>
 				<!-- End Slide 1 -->
 				<!-- Slide 2 -->
 				<li class="bg1">
-					<!-- Slide Title -->
-					<h2 class="title">Secret Tour</h2> <!-- Slide Text -->
-					<h3 class="subtitle">알려지지 않은 색다른 여행지</h3> <!-- Slide Image <img class="slide-img"
+					<!-- Slide Title --> <br>
+					<h2 class="title">알려지지 않은 <br>색다른 여행지를 찾아보세요~!</h2> <!-- Slide Text -->
+					<h3 class="subtitle"></h3> <!-- Slide Image <img class="slide-img"
 					src="img/homepage-slider/slide2.png" alt="Slide 2" /> -->
 				</li>
 				<!-- End Slide 2 -->
 				<!-- Slide 3 -->
 				<li class="bg14">
-					<!-- Slide Title -->
-					<h2 class="title">Secret Tour</h2> <!-- Slide Text -->
-					<h3 class="subtitle">새로운 여행 루트를 찾으십니까? Secret Tour를 소개합니다.</h3> <!-- Slide Image<img class="slide-img"
+					<!-- Slide Title --> <br>
+					<h2 class="title">새로운 여행 루트를 찾으십니까?<br> Secret Tour를 소개합니다.</h2> <!-- Slide Text -->
+					<h3 class="subtitle"></h3> <!-- Slide Image<img class="slide-img"
 					src="img/homepage-slider/slide3.png" alt="Slide 3" />  -->
 				</li>
 				<!-- End Slide 3 -->

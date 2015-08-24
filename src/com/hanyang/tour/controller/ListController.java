@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.hanyang.tour.model.dao.Place2Dao;
-import com.hanyang.tour.util.Encoder;
 
 /**
  * Servlet implementation class ListController
@@ -32,7 +31,6 @@ public class ListController extends HttpServlet {
 	protected void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		response.setContentType("text/html; charset=utf-8");
 		String place = request.getParameter("title");
-		place = "ff";
 		String path = Place2Dao.getMemberDao().getPath(place);
 		path = place+":"+path;
 		PrintWriter out = response.getWriter();
