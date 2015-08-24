@@ -22,6 +22,7 @@ public class ListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		execute(request, response);
 	}
 	
@@ -30,6 +31,7 @@ public class ListController extends HttpServlet {
 		execute(request, response);
 	}
 	protected void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		request.setCharacterEncoding("UTF-8");
 		String place = request.getParameter("title");
 		String path = Place2Dao.getMemberDao().getPath(place);
 		path = place+":"+path;

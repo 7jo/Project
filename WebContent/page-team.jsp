@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%  request.setCharacterEncoding("UTF-8"); %>	
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -72,12 +73,16 @@ h {
 										String result;
 										if (emailId != null) {
 									%>
-									<%=emailId %>님 환영합니다.&nbsp; &nbsp;<a href="/Tour/page-logout.jsp?url=<%=url%>">로그아웃</a> 
-									<%}else{  
- 									%> 
- 									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">로그인</a> 
-									<%} %> 
-								</h4></li> 
+									<%=emailId%>님 환영합니다.&nbsp; &nbsp;<a
+										href="/Tour/page-logout.jsp?url=<%=url%>">로그아웃</a>
+									<%
+										} else {
+									%>
+									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">로그인</a>
+									<%
+										}
+									%>
+								</h4></li>
 						</ul>
 					</div>
 				</div>
@@ -86,8 +91,8 @@ h {
 
 					<ul class="nav navbar-nav ">
 						<li><a href="index.jsp">홈 </a></li>
-						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="/Tour/notice">공지사항 </a></li>
+						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
 				</div>
@@ -118,19 +123,16 @@ h {
 					<div class="team-member">
 						<!-- Team Member Photo -->
 						<div class="team-member-image">
-							<img src="img/team1.jpg" alt="Name Surname">
+							<img src="img/상혁.jpg" alt="Name Surname">
 						</div>
 						<div class="team-member-info">
 							<ul>
 								<!-- Team Member Info & Social Links -->
-								<li class="team-member-name">Name <!-- Team Member Social Links -->
-									<span class="team-member-social"> <a href="#"><i
-											class="icon-facebook"></i></a> <a href="#"><i
-											class="icon-github"></i></a> <a href="#"><i
-											class="icon-tumblr"></i></a>
-								</span>
+								<li class="team-member-name">차상혁 <!-- Team Member Social Links -->
+							
 								</li>
-								<li>차박사</li>
+								<li>소속 : 한양대학교(ERICA)</li>
+								<li>이메일 : northcatcat@gmail.com</li>
 							</ul>
 						</div>
 					</div>
@@ -139,18 +141,14 @@ h {
 				<div class="col-md-4 col-sm-6">
 					<div class="team-member">
 						<div class="team-member-image">
-							<img src="img/team2.jpg" alt="Name Surname">
+							<img src="img/연홍.JPG" alt="Name Surname">
 						</div>
 						<div class="team-member-info">
 							<ul>
-								<li class="team-member-name">Name <span
-									class="team-member-social"> <a href="#"><i
-											class="icon-facebook"></i></a> <a href="#"><i
-											class="icon-dribbble"></i></a> <a href="#"><i
-											class="icon-tumblr"></i></a>
-								</span>
+								<li class="team-member-name">김연홍 
 								</li>
-								<li>연홍</li>
+								<li>소속 : 한양대학교(ERICA)</li>
+								<li>이메일 : kyh900423@hanyang.ac.kr</li>
 							</ul>
 						</div>
 					</div>
@@ -158,18 +156,14 @@ h {
 				<div class="col-md-4 col-sm-6">
 					<div class="team-member">
 						<div class="team-member-image">
-							<img src="img/team3.jpg" alt="Name Surname">
+							<img src="img/병문.jpg" alt="Name Surname">
 						</div>
 						<div class="team-member-info">
 							<ul>
-								<li class="team-member-name">Name <span
-									class="team-member-social"> <a href="#"><i
-											class="icon-facebook"></i></a> <a href="#"><i
-											class="icon-dribbble"></i></a> <a href="#"><i
-											class="icon-tumblr"></i></a>
-								</span>
+								<li class="team-member-name">허병문 
 								</li>
-								<li>병문</li>
+								<li>소속 : 국민대학교</li>
+								<li>이메일 : ssiass24@gmail.com</li>
 							</ul>
 						</div>
 					</div>
@@ -177,18 +171,14 @@ h {
 				<div class="col-md-4 col-sm-6">
 					<div class="team-member">
 						<div class="team-member-image">
-							<img src="img/team4.jpg" alt="Name Surname">
+							<img src="img/창훈.jpg" alt="Name Surname">
 						</div>
 						<div class="team-member-info">
 							<ul>
-								<li class="team-member-name">Name <span
-									class="team-member-social"> <a href="#"><i
-											class="icon-facebook"></i></a> <a href="#"><i
-											class="icon-dribbble"></i></a> <a href="#"><i
-											class="icon-tumblr"></i></a>
-								</span>
+								<li class="team-member-name">이창훈 
 								</li>
-								<li>창훈</li>
+								<li>소속 : 경기대학교</li>
+								<li>이메일 : destiner90@naver.com</li>
 							</ul>
 						</div>
 					</div>
@@ -200,37 +190,15 @@ h {
 						</div>
 						<div class="team-member-info">
 							<ul>
-								<li class="team-member-name">Name <span
-									class="team-member-social"> <a href="#"><i
-											class="icon-facebook"></i></a> <a href="#"><i
-											class="icon-dribbble"></i></a> <a href="#"><i
-											class="icon-tumblr"></i></a>
-								</span>
+								<li class="team-member-name">신소윤 
 								</li>
-								<li>소윤</li>
+								<li>소속 : 경기대학교</li>
+								<li>이메일 : yrssy@naver.com</li>
 							</ul>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="team-member">
-						<div class="team-member-image">
-							<img src="img/team6.jpg" alt="Name Surname">
-						</div>
-						<div class="team-member-info">
-							<ul>
-								<li class="team-member-name">Name Surname <span
-									class="team-member-social"> <a href="#"><i
-											class="icon-facebook"></i></a> <a href="#"><i
-											class="icon-dribbble"></i></a> <a href="#"><i
-											class="icon-tumblr"></i></a>
-								</span>
-								</li>
-								<li>Systems Analyst</li>
-							</ul>
-						</div>
-					</div>
-				</div>
+
 			</div>
 		</div>
 	</div>
@@ -246,8 +214,8 @@ h {
 
 					<ul class="no-list-style footer-navigate-section">
 						<li><a href="index.jsp">홈 </a></li>
-						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="/Tour/notice">공지사항 </a></li>
+						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
 
@@ -278,7 +246,7 @@ h {
 	<script>
 		window.jQuery
 				|| document
-						.write('<script src="js/jquery-1.9.1.min.js"><\/script>')
+						.write('_$tag_________________________________$tag_____')
 	</script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>

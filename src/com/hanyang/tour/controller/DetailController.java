@@ -36,6 +36,7 @@ public class DetailController extends HttpServlet {
 	}
 	
 	protected void execute(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String root = request.getContextPath();
 		String place = request.getParameter("place");
 		String path = "/index.jsp";

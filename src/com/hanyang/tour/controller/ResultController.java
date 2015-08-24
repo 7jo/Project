@@ -19,6 +19,7 @@ import com.hanyang.tour.model.dao.Place2Dao;
 /**
  * Servlet implementation class ResultController
  */
+
 @WebServlet("/result")
 public class ResultController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -34,6 +35,7 @@ public class ResultController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		execute(request, response);
 	}
+	
 	protected void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		System.out.println("test!!");
 		

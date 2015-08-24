@@ -1972,6 +1972,9 @@ span.color-red {
 #sequence > .sequence-canvas > li.bg14 {
   background-image: url(../img/homepage-slider/slider-bg1.jpg);
 }
+#sequence > .sequence-canvas > li.bg14 {
+  background-image: url(../img/homepage-slider/4.jpg);
+}
 #sequence > .sequence-canvas > li img {
   height: 96%;
 }

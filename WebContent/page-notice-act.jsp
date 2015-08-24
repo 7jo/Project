@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%  request.setCharacterEncoding("UTF-8"); %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String emailId = (String) session.getAttribute("email");
@@ -102,8 +103,8 @@ font-size:45px;
 
 					<ul class="nav navbar-nav ">
 						<li><a href="index.jsp">홈 </a></li>
-						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="/Tour/notice">공지사항 </a></li>
+						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
 				</div>

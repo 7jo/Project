@@ -22,6 +22,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
 		execute(request, response);
 	}
 
@@ -34,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 
 	protected void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	
+		request.setCharacterEncoding("UTF-8");
 		MemberDto mdto = new MemberDto();
 		mdto.setEmail(request.getParameter("ck_email"));
 		mdto.setPwd(request.getParameter("ck_pwd"));
@@ -44,11 +45,13 @@ public class LoginServlet extends HttpServlet {
 		int check = MemberDao.getMemberDao().check(mdto);
 		
 		if(check==0){
+			request.setCharacterEncoding("UTF-8");
 			String path="/page-login.jsp?islogin=false&url="+url;
 			
 			RequestDispatcher disp  = request.getRequestDispatcher(path);
 			disp.forward(request, response);
 		}else{
+			request.setCharacterEncoding("UTF-8");
 			String path="/loginsucess.jsp";
 			request.setAttribute("email", mdto.getEmail());
 			request.setAttribute("pwd", mdto.getPwd());

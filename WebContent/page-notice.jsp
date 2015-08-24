@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String emailId = (String) session.getAttribute("email");
-	if(emailId != null && emailId.equals("root")){
-		response.sendRedirect("/Tour/notice"); 
+	if (emailId != null && emailId.equals("root")) {
+		response.sendRedirect("/Tour/notice");
 	}
 	String url = "page-notice.jsp";
 	String result;
@@ -42,8 +45,8 @@ li {
 }
 </style>
 <style type="text/css">
-h{
-font-size:45px;
+h {
+	font-size: 45px;
 }
 </style>
 </head>
@@ -77,12 +80,16 @@ font-size:45px;
 									<%
 										if (emailId != null) {
 									%>
-									<%=emailId %>님 환영합니다.&nbsp; &nbsp;<a href="/Tour/page-logout.jsp?url=<%=url%>">로그아웃</a> 
-									<%}else{  
- 									%> 
- 									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">로그인</a> 
-									<%} %> 
-								</h4></li> 
+									<%=emailId%>님 환영합니다.&nbsp; &nbsp;<a
+										href="/Tour/page-logout.jsp?url=<%=url%>">로그아웃</a>
+									<%
+										} else {
+									%>
+									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">로그인</a>
+									<%
+										}
+									%>
+								</h4></li>
 						</ul>
 					</div>
 				</div>
@@ -91,8 +98,8 @@ font-size:45px;
 
 					<ul class="nav navbar-nav ">
 						<li><a href="index.jsp">홈 </a></li>
-						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="/Tour/notice">공지사항 </a></li>
+						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
 				</div>
@@ -133,7 +140,8 @@ font-size:45px;
 							</div>
 						</div>
 					</div>
-					<br><br>
+					<br>
+					<br>
 				</c:forEach>
 			</div>
 		</div>
@@ -151,8 +159,8 @@ font-size:45px;
 
 					<ul class="no-list-style footer-navigate-section">
 						<li><a href="index.jsp">홈 </a></li>
-						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="/Tour/notice">공지사항 </a></li>
+						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
 

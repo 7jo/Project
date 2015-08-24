@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%  request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -88,12 +89,16 @@ h {
 										String result;
 										if (emailId != null) {
 									%>
-									<%=emailId %>님 환영합니다.&nbsp; &nbsp;<a href="/Tour/page-logout.jsp?url=<%=url%>">로그아웃</a> 
-									<%}else{  
- 									%> 
- 									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">로그인</a> 
-									<%} %> 
-								</h4></li> 
+									<%=emailId%>님 환영합니다.&nbsp; &nbsp;<a
+										href="/Tour/page-logout.jsp?url=<%=url%>">로그아웃</a>
+									<%
+										} else {
+									%>
+									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">로그인</a>
+									<%
+										}
+									%>
+								</h4></li>
 						</ul>
 					</div>
 				</div>
@@ -102,8 +107,8 @@ h {
 
 					<ul class="nav navbar-nav ">
 						<li><a href="index.jsp">홈 </a></li>
-						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="/Tour/notice">공지사항 </a></li>
+						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
 				</div>
@@ -136,7 +141,7 @@ h {
 						<form role="form" action="/Tour/login">
 							<input type="hidden" name="url" value="<%=url%>">
 							<div class="form-group">
-								<label for="login-username"><i class="icon-user"></i> <b>이름 
+								<label for="login-username"><i class="icon-user"></i> <b>이름
 										또는 이메일</b></label> <input class="form-control" id="login-username"
 									name="ck_email" type="text" placeholder="">
 							</div>
@@ -148,7 +153,7 @@ h {
 							<div class="form-group">
 								<label class="checkbox"> <input type="checkbox">
 									기억하기
-								</label> 
+								</label>
 								<button type="submit" class="btn pull-right">로그인</button>
 								<div class="clearfix"></div>
 							</div>
@@ -159,12 +164,12 @@ h {
 					<div class="clearfix"></div>
 					<div class="not-member">
 						<p>
-							회원이 아니세요? <a href="page-register.jsp?url=<%=url %>">지금 가입하세요.</a>
+							회원이 아니세요? <a href="page-register.jsp?url=<%=url%>">지금 가입하세요.</a>
 						</p>
 					</div>
 					<div class="team-member-image">
 						<img alt="loginImg"
-						src="${pageContext.request.contextPath}/img/login.png" />
+							src="${pageContext.request.contextPath}/img/login.png" />
 					</div>
 				</div>
 			</div>
@@ -181,8 +186,8 @@ h {
 
 					<ul class="no-list-style footer-navigate-section">
 						<li><a href="index.jsp">홈 </a></li>
-						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="/Tour/notice">공지사항 </a></li>
+						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
 
@@ -199,8 +204,8 @@ h {
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<div class="footer-copyright">&copy; 2015 All rights
-						reserved from Team_Secret</div>
+					<div class="footer-copyright">&copy; 2015 All rights reserved
+						from Team_Secret</div>
 				</div>
 			</div>
 		</div>

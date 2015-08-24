@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%  request.setCharacterEncoding("UTF-8"); %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String emailId = (String) session.getAttribute("email");
 	String url = "page-notice-admin.jsp";
 	String result;
-	if (emailId == null|| !emailId.equals("root")) {
+	if (emailId == null || !emailId.equals("root")) {
 		response.sendRedirect("/Tour/notice");
 	}
 %>
@@ -77,12 +78,16 @@ h {
 									<%
 										if (emailId != null) {
 									%>
-									<%=emailId %>님 환영합니다.&nbsp; &nbsp;<a href="/Tour/page-logout.jsp?url=<%=url%>">로그아웃</a> 
-									<%}else{  
- 									%> 
- 									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">로그인</a> 
-									<%} %> 
-								</h4></li> 
+									<%=emailId%>님 환영합니다.&nbsp; &nbsp;<a
+										href="/Tour/page-logout.jsp?url=<%=url%>">로그아웃</a>
+									<%
+										} else {
+									%>
+									<a href="/Tour/page-login.jsp?islogin=true&url=<%=url%>">로그인</a>
+									<%
+										}
+									%>
+								</h4></li>
 						</ul>
 					</div>
 				</div>
@@ -91,8 +96,8 @@ h {
 
 					<ul class="nav navbar-nav ">
 						<li><a href="index.jsp">홈 </a></li>
-						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="/Tour/notice">공지사항 </a></li>
+						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
 				</div>
@@ -118,7 +123,8 @@ h {
 	<div class="section">
 		<div class="container">
 			<div class="pull-right">
-				<a href="page-notice-act.jsp?act=add"><button type="button" class="btn btn-default">+공지사항 등록</button></a>
+				<a href="page-notice-act.jsp?act=add"><button type="button"
+						class="btn btn-default">+공지사항 등록</button></a>
 			</div>
 
 			<h2>공지사항</h2>
@@ -138,19 +144,20 @@ h {
 						</div>
 					</div>
 					<div class="container">
-					<form action="/Tour/page-notice-act.jsp" method="POST">
-					<input type=hidden name="act" value="mod">
-					<input type=hidden name="id" value="${list.id}">
-					<input type=hidden name="contents" value="${list.contents}">
-					<div class="pull-right">
-							<input type="submit" class="btn btn-default" value="수정">
-							&nbsp;&nbsp;
-							<a href="notice?act=del&id=${list.id}"><button type="button" class="btn btn-default">삭제</button></a>
+						<form action="/Tour/page-notice-act.jsp" method="POST">
+							<input type=hidden name="act" value="mod"> <input
+								type=hidden name="id" value="${list.id}"> <input
+								type=hidden name="contents" value="${list.contents}">
+							<div class="pull-right">
+								<input type="submit" class="btn btn-default" value="수정">
+								&nbsp;&nbsp; <a href="notice?act=del&id=${list.id}"><button
+										type="button" class="btn btn-default">삭제</button></a>
+							</div>
+						</form>
+
 					</div>
-					</form>
-						
-					</div>
-					<br><br>
+					<br>
+					<br>
 				</c:forEach>
 			</div>
 		</div>
@@ -168,8 +175,8 @@ h {
 
 					<ul class="no-list-style footer-navigate-section">
 						<li><a href="index.jsp">홈 </a></li>
-						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="/Tour/notice">공지사항 </a></li>
+						<li><a href="page-team.jsp">프로젝트 맴버 </a></li>
 						<li><a href="page-result.jsp">여행 추천 </a></li>
 					</ul>
 
